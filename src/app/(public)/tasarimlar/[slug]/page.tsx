@@ -16,10 +16,18 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-/** Statik parametre üretimi — Supabase'den slug'ları çeker */
+/** Statik parametre üretimi — build sırasında service role ile slug'ları çeker */
 export async function generateStaticParams() {
-  const templates = await getTemplates();
-  return templates.map((t) => ({ slug: t.slug }));
+  const { createClient } = await import('@supabase/supabase-js');
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+  );
+  const { data } = await supabase
+    .from('templates')
+    .select('slug')
+    .eq('is_active', true);
+  return (data ?? []).map((t: { slug: string }) => ({ slug: t.slug }));
 }
 
 /** Dinamik SEO metadata */
