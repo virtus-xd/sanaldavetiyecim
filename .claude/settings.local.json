@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(COMPOSIO_API_KEY=\"ak_9rWMre2ozdQHf-K0M_jG\" python -c \"\nfrom composio import Composio\nclient = Composio\\(api_key='ak_9rWMre2ozdQHf-K0M_jG'\\)\ntry:\n    connections = client.connected_accounts.list\\(\\)\n    for c in connections:\n        print\\(c\\)\nexcept Exception as e:\n    print\\('Error:', e\\)\n\" 2>&1)",
+      "Bash(COMPOSIO_API_KEY=\"ak_9rWMre2ozdQHf-K0M_jG\" python -c \"\nfrom composio import Composio\nclient = Composio\\(api_key='ak_9rWMre2ozdQHf-K0M_jG'\\)\nrequest = client.connected_accounts.initiate\\(\n    app_name='gmail',\n    user_id='default',\n    redirect_url='https://composio.dev'\n\\)\nprint\\('Auth URL:', request.redirect_url if hasattr\\(request, 'redirect_url'\\) else request\\)\n\" 2>&1)",
+      "Bash(COMPOSIO_API_KEY=\"ak_9rWMre2ozdQHf-K0M_jG\" python -c \":*)",
+      "Bash(python:*)",
+      "Bash(npx:*)",
+      "Bash(cp -r /c/Users/erdem/Desktop/sanaldavetiyecim-app/. /c/Users/erdem/Desktop/sanaldavetiyecim/)",
+      "Bash(rm -rf /c/Users/erdem/Desktop/sanaldavetiyecim-app)",
+      "Bash(npm install:*)",
+      "Bash(ls:*)",
+      "Bash(grep -r proxy /c/Users/erdem/Desktop/sanaldavetiyecim/node_modules/next/dist/docs/01-app/ --include=*.md -l)",
+      "Bash(vercel:*)",
+      "Bash(TOKEN=\"vcp_2z981diubCXhQRGpwWS7s76HXOw6DkyI39RtddSuF93iy7yh3B1qT5E4\" PROJ=\"qfzsjxdgcggsmznjhdmy\" __NEW_LINE_abb3d0f44e3c5aa2__ echo \"NEXT_PUBLIC_SUPABASE_URL=https://$PROJ.supabase.co\")",
+      "Bash(TOKEN=\"vcp_2z981diubCXhQRGpwWS7s76HXOw6DkyI39RtddSuF93iy7yh3B1qT5E4\" __NEW_LINE_7653e3e1b9de2717__ printf '%s' \"re_8RZe7fTt_8HYvg9Gii29hqTeXdgkXtkKd\")",
+      "Bash(1 printf:*)",
+      "mcp__claude_ai_Vercel__get_runtime_logs",
+      "mcp__claude_ai_Vercel__list_projects",
+      "Bash(TOKEN=\"vcp_2z981diubCXhQRGpwWS7s76HXOw6DkyI39RtddSuF93iy7yh3B1qT5E4\" __NEW_LINE_8e6890b81422b67c__ printf '%s' \"https://qfzsjxdgcggsmznjhdmy.supabase.co\")",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}
