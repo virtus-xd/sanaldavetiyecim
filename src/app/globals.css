@@ -34,6 +34,15 @@
   --radius-lg:   12px;
   --radius-xl:   16px;
   --radius-2xl:  24px;
+
+  /* Admin dark theme */
+  --color-admin-bg:      #0D0F14;
+  --color-admin-sidebar: #090A0E;
+  --color-admin-card:    #13151B;
+  --color-admin-border:  #1D2029;
+  --color-admin-text:    #E8EAF0;
+  --color-admin-muted:   #696C7B;
+  --color-admin-gold:    #C49A1E;
 }
 
 /* Temel stiller */
