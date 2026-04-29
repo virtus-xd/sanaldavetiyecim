@@ -5,17 +5,18 @@
  */
 import { useState }    from 'react';
 import { useRouter }   from 'next/navigation';
-import { Eye }         from 'lucide-react';
+import { Eye, ExternalLink } from 'lucide-react';
 import { Modal }       from '@/components/ui/Modal';
 import { Button }      from '@/components/ui/Button';
 import { Select }      from '@/components/ui/Select';
 import { Input }       from '@/components/ui/Input';
 import { OrderStatusBadge } from './OrderStatusBadge';
 import { formatPrice, formatDate } from '@/lib/utils';
-import { EVENT_TYPES, ORDER_STATUSES } from '@/lib/constants';
-import type { OrderStatus } from '@/types';
+import { EVENT_TYPES, ORDER_STATUSES, PAYMENT_STATUSES, PAYMENT_STATUS_COLORS } from '@/lib/constants';
+import type { OrderStatus, PaymentStatus } from '@/types';
 
-const STATUS_OPTIONS = Object.entries(ORDER_STATUSES).map(([value, label]) => ({ value, label }));
+const STATUS_OPTIONS  = Object.entries(ORDER_STATUSES).map(([value, label]) => ({ value, label }));
+const PAYMENT_OPTIONS = Object.entries(PAYMENT_STATUSES).map(([value, label]) => ({ value, label }));
 
 interface OrderDetailModalProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -27,6 +28,7 @@ export function OrderDetailModal({ order }: OrderDetailModalProps) {
   const [open,    setOpen]    = useState(false);
   const [status,  setStatus]  = useState<OrderStatus>(order.status);
   const [url,     setUrl]     = useState(order.delivered_url ?? '');
+  const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>(order.payment_status ?? 'beklemede');
   const [saving,  setSaving]  = useState(false);
 
   const handleSave = async () => {
@@ -34,7 +36,11 @@ export function OrderDetailModal({ order }: OrderDetailModalProps) {
     await fetch(`/api/admin/orders/${order.id}`, {
       method:  'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ status, deliveredUrl: url || undefined }),
+      body:    JSON.stringify({
+        status,
+        deliveredUrl: url || undefined,
+        paymentStatus,
+      }),
     });
     setSaving(false);
     setOpen(false);
@@ -81,9 +87,26 @@ export function OrderDetailModal({ order }: OrderDetailModalProps) {
             </div>
           )}
 
-          {/* Durum Güncelleme */}
+          {/* Ödeme Durumu */}
           <div className="border-t border-neutral-100 pt-4 flex flex-col gap-3">
-            <p className="font-semibold text-neutral-700 text-sm">Durumu Güncelle</p>
+            <p className="font-semibold text-neutral-700 text-sm">Ödeme Durumu</p>
+            <div className="flex items-center gap-3">
+              <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${PAYMENT_STATUS_COLORS[order.payment_status as PaymentStatus] ?? PAYMENT_STATUS_COLORS.beklemede}`}>
+                {PAYMENT_STATUSES[order.payment_status as PaymentStatus] ?? 'Beklemede'}
+              </span>
+              <span className="text-neutral-400 text-xs">→</span>
+              <Select
+                options={PAYMENT_OPTIONS}
+                value={paymentStatus}
+                onChange={(e) => setPaymentStatus(e.target.value as PaymentStatus)}
+                className="flex-1"
+              />
+            </div>
+          </div>
+
+          {/* Sipariş Durumu Güncelleme */}
+          <div className="border-t border-neutral-100 pt-4 flex flex-col gap-3">
+            <p className="font-semibold text-neutral-700 text-sm">Sipariş Durumu</p>
             <div className="flex items-center gap-3">
               <OrderStatusBadge status={order.status as OrderStatus} />
               <span className="text-neutral-400 text-xs">→</span>
@@ -101,6 +124,21 @@ export function OrderDetailModal({ order }: OrderDetailModalProps) {
               onChange={(e) => setUrl(e.target.value)}
             />
           </div>
+
+          {/* Davetiye Önizleme */}
+          {(order.delivered_url || order.status === 'tamamlandi') && (
+            <div className="border-t border-neutral-100 pt-4">
+              <a
+                href={order.delivered_url || `/davetiye/${order.order_number}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+              >
+                <ExternalLink size={14} />
+                Davetiyeyi Önizle
+              </a>
+            </div>
+          )}
 
           <div className="flex gap-3 justify-end">
             <Button variant="outline" onClick={() => setOpen(false)}>İptal</Button>

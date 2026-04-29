@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { createAdminClient } from '@/lib/supabase/server';
 import { formatPrice, formatDate } from '@/lib/utils';
 import { OrderDetailModal }  from '@/components/admin/OrderDetailModal';
-import type { OrderStatus }  from '@/types';
+import type { OrderStatus, PaymentStatus }  from '@/types';
 
 export const dynamic = 'force-dynamic';
 export const metadata: Metadata = { title: 'Siparişler — Admin' };
@@ -33,6 +33,12 @@ const STATUS_STYLES: Record<OrderStatus, { label: string; color: string; bg: str
   hazirlaniyor: { label: 'Hazırlanıyor', color: '#60A5FA', bg: 'rgba(96,165,250,0.08)',  dot: '#60A5FA' },
   tamamlandi:   { label: 'Tamamlandı',   color: '#34D399', bg: 'rgba(52,211,153,0.08)',  dot: '#34D399' },
   iptal:        { label: 'İptal',        color: '#F87171', bg: 'rgba(248,113,113,0.08)', dot: '#F87171' },
+};
+
+const PAYMENT_STYLES: Record<PaymentStatus, { label: string; color: string; bg: string; dot: string }> = {
+  beklemede: { label: 'Ödeme Bekliyor', color: '#F59E0B', bg: 'rgba(245,158,11,0.08)', dot: '#F59E0B' },
+  onaylandi: { label: 'Ödendi',         color: '#10B981', bg: 'rgba(16,185,129,0.08)', dot: '#10B981' },
+  iptal:     { label: 'Ödeme İptal',    color: '#F87171', bg: 'rgba(248,113,113,0.08)', dot: '#F87171' },
 };
 
 const statusOptions = [
@@ -123,6 +129,7 @@ export default async function SiparislerPage({ searchParams }: PageProps) {
                   { label: 'Tür',        cls: 'hidden sm:table-cell' },
                   { label: 'Tarih',      cls: 'hidden md:table-cell' },
                   { label: 'Durum',      cls: '' },
+                  { label: 'Ödeme',      cls: 'hidden lg:table-cell' },
                   { label: 'Tutar',      cls: 'hidden lg:table-cell text-right' },
                   { label: '',           cls: '' },
                 ].map((h, i) => (
@@ -138,7 +145,7 @@ export default async function SiparislerPage({ searchParams }: PageProps) {
             <tbody>
               {orders.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-4 py-14 text-center text-[13px] text-admin-muted">
+                  <td colSpan={8} className="px-4 py-14 text-center text-[13px] text-admin-muted">
                     Sipariş bulunamadı.
                   </td>
                 </tr>
@@ -176,6 +183,20 @@ export default async function SiparislerPage({ searchParams }: PageProps) {
                           <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: s.dot }} />
                           {s.label}
                         </span>
+                      </td>
+                      <td className="px-4 py-3.5 hidden lg:table-cell">
+                        {(() => {
+                          const p = PAYMENT_STYLES[(order.payment_status as PaymentStatus) ?? 'beklemede'] ?? PAYMENT_STYLES.beklemede;
+                          return (
+                            <span
+                              className="inline-flex items-center gap-1.5 text-[11.5px] font-medium px-2.5 py-1 rounded-full"
+                              style={{ color: p.color, background: p.bg }}
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: p.dot }} />
+                              {p.label}
+                            </span>
+                          );
+                        })()}
                       </td>
                       <td className="px-4 py-3.5 hidden lg:table-cell text-right">
                         <span className="text-[13px] font-medium text-admin-text">

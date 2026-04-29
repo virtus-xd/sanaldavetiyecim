@@ -2,6 +2,7 @@ import { getResend, FROM_ADDRESS, ADMIN_EMAIL } from './resend';
 import { orderConfirmationHtml, orderConfirmationText } from './templates/orderConfirmation';
 import { adminNewOrderHtml, adminNewOrderText }         from './templates/adminNewOrder';
 import { orderDeliveredHtml, orderDeliveredText }       from './templates/orderDelivered';
+import { paymentConfirmedHtml, paymentConfirmedText }   from './templates/paymentConfirmed';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://sanaldavetiyecim.com';
 
@@ -44,6 +45,22 @@ export async function sendAdminNewOrder(order: {
     subject: `🛍️ Yeni Sipariş: ${order.orderNumber} — ${order.customerName}`,
     html:    adminNewOrderHtml(data),
     text:    adminNewOrderText(data),
+  });
+}
+
+/* ─── Ödeme onay bildirimi — müşteriye ─── */
+export async function sendPaymentConfirmed(params: {
+  orderNumber:   string;
+  customerName:  string;
+  customerEmail: string;
+}) {
+  const data = { ...params, siteUrl: SITE_URL };
+  return getResend().emails.send({
+    from:    FROM_ADDRESS,
+    to:      params.customerEmail,
+    subject: `Ödemeniz Onaylandı — ${params.orderNumber}`,
+    html:    paymentConfirmedHtml(data),
+    text:    paymentConfirmedText(data),
   });
 }
 

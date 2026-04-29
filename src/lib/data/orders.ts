@@ -3,7 +3,7 @@
  */
 import { createClient, createAdminClient } from '@/lib/supabase/server';
 import { generateOrderNumber } from '@/lib/utils';
-import type { Order, OrderStatus } from '@/types';
+import type { Order, OrderStatus, PaymentStatus } from '@/types';
 import type { OrderFormValues } from '@/lib/validations';
 
 function mapRow(row: Record<string, unknown>): Order {
@@ -26,6 +26,10 @@ function mapRow(row: Record<string, unknown>): Order {
     additionalNotes: (row.additional_notes as string) ?? '',
     totalPrice:      Number(row.total_price),
     deliveredUrl:    (row.delivered_url  as string)  ?? null,
+    paymentStatus:   (row.payment_status as PaymentStatus) ?? 'beklemede',
+    paymentMethod:   (row.payment_method as string)  ?? 'havale',
+    paymentNote:     (row.payment_note   as string)  ?? null,
+    paymentConfirmedAt: (row.payment_confirmed_at as string) ?? null,
     createdAt:       row.created_at      as string,
     updatedAt:       row.updated_at      as string,
   };
