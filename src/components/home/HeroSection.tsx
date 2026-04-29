@@ -1,143 +1,110 @@
 'use client';
 
-/**
- * Ana sayfa hero bölümü — tam ekran, gradient arka plan, animasyonlu içerik.
- */
 import Link from 'next/link';
-import { motion, type Variants } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
 
-const floatVariants: Variants = {
-  animate: {
-    y: [-8, 8, -8],
-    transition: { duration: 5, repeat: Infinity, ease: [0.4, 0, 0.6, 1] },
-  },
-};
+const PREVIEW_IMAGES = [
+  '/template-previews/floral_cover.png',
+  '/template-previews/gatsby_cover.png',
+  '/template-previews/starry_cover.png',
+  '/template-previews/classic_cover.png',
+];
 
 export function HeroSection() {
   return (
-    <section
-      className="relative min-h-[90vh] flex items-center overflow-hidden bg-cream"
-      aria-label="Ana Sayfa Hero"
-    >
-      {/* Dekoratif arka plan şekilleri */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary/8 blur-3xl" />
-        <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full bg-secondary/20 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-accent/5 blur-3xl" />
-      </div>
+    <section className="bg-[#fffbf5] pt-14 overflow-hidden" aria-label="Ana Sayfa Hero">
+      <Container>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[480px] py-14 lg:py-20">
 
-      {/* Yüzen dekoratif elementler */}
-      <motion.div
-        variants={floatVariants}
-        animate="animate"
-        className="absolute top-16 right-[12%] w-12 h-12 rounded-xl bg-primary/15 backdrop-blur-sm border border-primary/20 hidden lg:block"
-        aria-hidden="true"
-      />
-      <motion.div
-        variants={floatVariants}
-        animate="animate"
-        style={{ animationDelay: '1.5s' }}
-        className="absolute bottom-24 right-[20%] w-8 h-8 rounded-full bg-secondary/30 border border-secondary hidden lg:block"
-        aria-hidden="true"
-      />
-      <motion.div
-        variants={floatVariants}
-        animate="animate"
-        style={{ animationDelay: '3s' }}
-        className="absolute top-1/3 left-[8%] w-6 h-6 rounded-lg bg-accent/15 hidden lg:block"
-        aria-hidden="true"
-      />
+          {/* Sol: Metin */}
+          <div className="max-w-[520px]">
+            <h1 className="text-[2.6rem] md:text-[3.2rem] lg:text-[3.6rem] font-bold text-black leading-[1.1] tracking-tight mb-6">
+              Özel anlarınız için dijital davetiye
+            </h1>
+            <p className="text-[#555555] text-base md:text-lg leading-relaxed mb-8 max-w-[420px]">
+              Düğün, nişan, söz ve kına organizasyonlarınız için şık dijital davetiye siteleri hazırlıyoruz. Tek link ile tüm misafirlerinize ulaşın.
+            </p>
+            <Link
+              href="/tasarimlar"
+              className="inline-flex items-center justify-center px-7 py-3 border border-black text-black text-sm font-semibold hover:bg-black hover:text-white transition-colors tracking-wide"
+            >
+              TASARIMLARI İNCELE
+            </Link>
 
-      <Container className="relative z-10 py-20 md:py-28">
-        <div className="max-w-3xl mx-auto text-center">
-          {/* Üst etiket */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6"
-          >
-            <Sparkles size={14} aria-hidden="true" />
-            Dijital Davetiye Hizmeti
-          </motion.div>
-
-          {/* Ana başlık */}
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-neutral-800 leading-tight mb-6"
-          >
-            Hayalinizdeki Davetiyeyi{' '}
-            <span className="text-primary relative">
-              Dijitale Taşıyoruz
-              <span
-                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary/40 rounded-full"
-                aria-hidden="true"
-              />
-            </span>
-          </motion.h1>
-
-          {/* Alt başlık */}
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-neutral-500 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto"
-          >
-            Düğün, nişan, söz ve kına organizasyonlarınız için şık dijital davetiye siteleri
-            hazırlıyoruz. Tek bir link ile tüm misafirlerinize ulaşın.
-          </motion.p>
-
-          {/* CTA butonları */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Button asChild size="lg">
-              <Link href="/tasarimlar" className="flex items-center gap-2">
-                Tasarımları İncele
-                <ArrowRight size={18} aria-hidden="true" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="/siparis">Hemen Sipariş Ver</Link>
-            </Button>
-          </motion.div>
-
-          {/* İstatistikler */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-16 grid grid-cols-3 gap-6 max-w-lg mx-auto"
-          >
-            {[
-              { value: '500+',   label: 'Mutlu Çift' },
-              { value: '24 sa',  label: 'Hızlı Teslimat' },
-              { value: '%100',   label: 'Memnuniyet' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="font-display text-2xl md:text-3xl font-bold text-primary">
-                  {stat.value}
+            {/* İstatistikler */}
+            <div className="mt-12 flex items-center gap-8">
+              {[
+                { value: '500+',  label: 'Mutlu Çift' },
+                { value: '24 sa', label: 'Hızlı Teslimat' },
+                { value: '%100',  label: 'Memnuniyet' },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <div className="text-xl font-bold text-black">{stat.value}</div>
+                  <div className="text-xs text-[#767676] mt-0.5">{stat.label}</div>
                 </div>
-                <div className="text-xs md:text-sm text-neutral-500 mt-1">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Sağ: Davetiye kartı mockupları */}
+          <div className="relative hidden lg:block h-[440px]">
+            {/* Arka kart */}
+            <div className="absolute top-4 right-24 w-52 h-[300px] shadow-xl rotate-[-4deg] overflow-hidden rounded-sm">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={PREVIEW_IMAGES[0]}
+                alt="Davetiye örneği"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* Ön kart */}
+            <div className="absolute top-12 right-4 w-56 h-[320px] shadow-2xl rotate-[3deg] overflow-hidden rounded-sm">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={PREVIEW_IMAGES[1]}
+                alt="Davetiye örneği"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* Sol kart */}
+            <div className="absolute bottom-8 left-0 w-44 h-[260px] shadow-xl rotate-[-2deg] overflow-hidden rounded-sm">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={PREVIEW_IMAGES[2]}
+                alt="Davetiye örneği"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
         </div>
       </Container>
 
-      {/* Alt dalga dekorasyon */}
-      <div className="absolute bottom-0 left-0 right-0" aria-hidden="true">
-        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0 60L60 50C120 40 240 20 360 15C480 10 600 20 720 25C840 30 960 30 1080 25C1200 20 1320 10 1380 5L1440 0V60H0Z" fill="white" />
-        </svg>
+      {/* Kategori chips — PP "Explore by category" */}
+      <div className="border-t border-[#eeeeee] bg-white">
+        <Container>
+          <div className="py-5 flex items-center gap-3 overflow-x-auto scrollbar-hide">
+            <span className="text-sm font-semibold text-black shrink-0">Kategoriye göre:</span>
+            {[
+              { label: 'Düğün',  href: '/tasarimlar?tur=dugun' },
+              { label: 'Nişan',  href: '/tasarimlar?tur=nisan' },
+              { label: 'Söz',    href: '/tasarimlar?tur=soz' },
+              { label: 'Kına',   href: '/tasarimlar?tur=kina' },
+              { label: 'Modern', href: '/tasarimlar?stil=modern' },
+              { label: 'Klasik', href: '/tasarimlar?stil=klasik' },
+              { label: 'Lüks',   href: '/tasarimlar?stil=luks' },
+              { label: 'Romantik', href: '/tasarimlar?stil=romantik' },
+            ].map((cat) => (
+              <Link
+                key={cat.label}
+                href={cat.href}
+                className="shrink-0 px-4 py-2 bg-[#f9f9f9] border border-[#eeeeee] text-sm text-[#333333] font-medium hover:border-[#999999] hover:bg-white transition-colors rounded-sm"
+              >
+                {cat.label}
+              </Link>
+            ))}
+          </div>
+        </Container>
       </div>
     </section>
   );

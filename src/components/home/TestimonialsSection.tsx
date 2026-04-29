@@ -1,15 +1,9 @@
 'use client';
 
-/**
- * Müşteri yorumları bölümü — yatay kaydırmalı carousel.
- */
 import { useRef } from 'react';
-import { motion } from 'framer-motion';
-import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Testimonial } from '@/types';
 import { Container } from '@/components/ui/Container';
-import { SectionTitle } from '@/components/ui/SectionTitle';
-import { useScrollAnimation, fadeInVariants } from '@/hooks/useScrollAnimation';
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -17,8 +11,8 @@ function StarRating({ rating }: { rating: number }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
-          size={14}
-          className={i < rating ? 'fill-primary text-primary' : 'text-neutral-200'}
+          size={12}
+          className={i < rating ? 'fill-black text-black' : 'fill-[#dddddd] text-[#dddddd]'}
           aria-hidden="true"
         />
       ))}
@@ -26,87 +20,60 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
-interface TestimonialsSectionProps {
-  testimonials: Testimonial[];
-}
-
-export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) {
+export function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { ref, inView } = useScrollAnimation();
 
   const scroll = (dir: 'left' | 'right') => {
-    if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({ left: dir === 'left' ? -320 : 320, behavior: 'smooth' });
+    scrollRef.current?.scrollBy({ left: dir === 'left' ? -300 : 300, behavior: 'smooth' });
   };
 
   return (
-    <section className="py-20 md:py-28 bg-cream overflow-hidden" aria-label="Müşteri Yorumları">
+    <section className="py-20 md:py-28 bg-[#fffbf5] border-t border-[#eeeeee]" aria-label="Müşteri Yorumları">
       <Container>
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-          <SectionTitle
-            title="Mutlu Çiftler Ne Diyor?"
-            subtitle="Hizmetimizden memnun kalan çiftlerin yorumları."
-            align="left"
-          />
-
-          {/* Kaydırma butonları */}
+        <div className="flex items-end justify-between mb-10">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-1">Mutlu çiftler ne diyor?</h2>
+            <p className="text-sm text-[#767676]">Hizmetimizden memnun kalan çiftlerin yorumları.</p>
+          </div>
           <div className="flex gap-2 shrink-0">
             <button
               onClick={() => scroll('left')}
-              className="w-10 h-10 rounded-xl border border-neutral-200 bg-white flex items-center justify-center text-neutral-500 hover:border-primary hover:text-primary transition-colors"
+              className="w-9 h-9 border border-[#dddddd] bg-white flex items-center justify-center text-[#555555] hover:border-black hover:text-black transition-colors"
               aria-label="Önceki yorum"
             >
-              <ChevronLeft size={18} />
+              <ChevronLeft size={16} />
             </button>
             <button
               onClick={() => scroll('right')}
-              className="w-10 h-10 rounded-xl border border-neutral-200 bg-white flex items-center justify-center text-neutral-500 hover:border-primary hover:text-primary transition-colors"
+              className="w-9 h-9 border border-[#dddddd] bg-white flex items-center justify-center text-[#555555] hover:border-black hover:text-black transition-colors"
               aria-label="Sonraki yorum"
             >
-              <ChevronRight size={18} />
+              <ChevronRight size={16} />
             </button>
           </div>
         </div>
 
-        <motion.div
-          ref={ref}
-          variants={fadeInVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
+        <div
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          <div
-            ref={scrollRef}
-            className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {testimonials.map((testimonial) => (
-              <article
-                key={testimonial.id}
-                className="flex-none w-72 md:w-80 snap-start bg-white rounded-2xl p-6 border border-neutral-100 hover:border-primary/20 hover:shadow-md transition-all duration-300"
-              >
-                <Quote
-                  size={28}
-                  className="text-primary/20 mb-4 fill-primary/10"
-                  aria-hidden="true"
-                />
-
-                <p className="text-neutral-600 text-sm leading-relaxed mb-5 line-clamp-4">
-                  &ldquo;{testimonial.comment}&rdquo;
-                </p>
-
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-semibold text-neutral-800 text-sm">
-                      {testimonial.customerName}
-                    </p>
-                    <p className="text-neutral-400 text-xs mt-0.5">{testimonial.eventType}</p>
-                  </div>
-                  <StarRating rating={testimonial.rating} />
-                </div>
-              </article>
-            ))}
-          </div>
-        </motion.div>
+          {testimonials.map((t) => (
+            <article
+              key={t.id}
+              className="flex-none w-72 snap-start bg-white border border-[#eeeeee] p-6 hover:border-[#999999] transition-colors"
+            >
+              <StarRating rating={t.rating} />
+              <p className="text-sm text-[#333333] leading-relaxed my-4 line-clamp-4">
+                &ldquo;{t.comment}&rdquo;
+              </p>
+              <div>
+                <p className="text-sm font-semibold text-black">{t.customerName}</p>
+                <p className="text-xs text-[#767676] mt-0.5">{t.eventType}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </Container>
     </section>
   );

@@ -1,78 +1,89 @@
 'use client';
 
-/**
- * Özellikler bölümü — 4 özellik kartı, scroll animasyonlu.
- */
-import { motion } from 'framer-motion';
-import { Palette, Zap, Smartphone, Share2 } from 'lucide-react';
+import { useState } from 'react';
 import { Container } from '@/components/ui/Container';
-import { SectionTitle } from '@/components/ui/SectionTitle';
-import { useScrollAnimation, staggerContainerVariants, fadeUpVariants } from '@/hooks/useScrollAnimation';
 
 const features = [
   {
-    icon:        Palette,
-    title:       'Özgün Tasarımlar',
-    description: 'Her davetiye size özel hazırlanır. Kişisel bilgileriniz ve tercihleriniz doğrultusunda benzersiz bir tasarım oluşturulur.',
-    color:       'bg-primary/10 text-primary',
+    title:       'Geniş tasarım koleksiyonu',
+    description: 'Her zevke uygun onlarca şablon arasından seçin. Modern, klasik, romantik ve daha fazlası.',
   },
   {
-    icon:        Zap,
-    title:       'Hızlı Teslimat',
-    description: 'Siparişiniz 24-48 saat içinde tamamlanır. Özel günlerinize yetişmek için hızlı çalışıyoruz.',
-    color:       'bg-secondary/30 text-secondary-dark',
+    title:       'Stressiz hazırlık süreci',
+    description: 'Sipariş verdikten sonra 24-48 saat içinde davetiyeniz hazır. Siz sadece paylaşın.',
   },
   {
-    icon:        Smartphone,
-    title:       'Mobil Uyumlu',
-    description: 'Davetiyelerin tüm cihazlarda kusursuz görünmesi için her tasarım mobil öncelikli hazırlanır.',
-    color:       'bg-accent/10 text-accent',
-  },
-  {
-    icon:        Share2,
-    title:       'Kolay Paylaşım',
-    description: 'Tek bir link ile WhatsApp, SMS veya sosyal medya üzerinden tüm misafirlerinize ulaşın.',
-    color:       'bg-green-100 text-green-700',
+    title:       'Sınırsız misafir erişimi',
+    description: 'Tek link ile WhatsApp, SMS veya sosyal medya üzerinden sınırsız kişiye ulaşın.',
   },
 ];
 
+const GRID_IMAGES = [
+  '/template-previews/classic_section_1.png',
+  '/template-previews/gatsby_section_1.png',
+  '/template-previews/floral_section_1.png',
+  '/template-previews/starry_section_1.png',
+  '/template-previews/rustic_section_1.png',
+  '/template-previews/autumn_section_1.png',
+];
+
 export function FeaturesSection() {
-  const { ref, inView } = useScrollAnimation();
+  const [open, setOpen] = useState(0);
 
   return (
-    <section className="py-20 md:py-28 bg-white" aria-label="Özellikler">
+    <section className="py-20 md:py-28 bg-[#ecf4ff]" aria-label="Özellikler">
       <Container>
-        <SectionTitle
-          title="Neden Bizi Tercih Etmelisiniz?"
-          subtitle="Dijital davetiyelerde kalite, hız ve kişiselleştirmeyi bir arada sunuyoruz."
-          className="mb-14"
-        />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-        <motion.div
-          ref={ref}
-          variants={staggerContainerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {features.map((feature) => (
-            <motion.div
-              key={feature.title}
-              variants={fadeUpVariants}
-              className="flex flex-col items-center text-center p-6 rounded-2xl border border-neutral-100 hover:border-primary/20 hover:shadow-md transition-all duration-300 group"
-            >
-              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 ${feature.color} group-hover:scale-110 transition-transform duration-300`}>
-                <feature.icon size={26} aria-hidden="true" />
+          {/* Sol: Başlık + Accordion */}
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-black leading-tight mb-10">
+              Güzel tasarım ile<br />zahmetsiz organizasyon
+            </h2>
+
+            <div className="flex flex-col divide-y divide-[#c6deff]">
+              {features.map((f, i) => (
+                <div key={f.title} className="py-4">
+                  <button
+                    className="w-full flex items-center justify-between text-left gap-4 group"
+                    onClick={() => setOpen(open === i ? -1 : i)}
+                    aria-expanded={open === i}
+                  >
+                    <span className={`text-base font-semibold transition-colors ${open === i ? 'text-primary' : 'text-black group-hover:text-primary'}`}>
+                      {f.title}
+                    </span>
+                    <span className={`text-xl font-light text-[#555555] shrink-0 transition-transform ${open === i ? 'rotate-45' : ''}`}>
+                      +
+                    </span>
+                  </button>
+                  {open === i && (
+                    <p className="mt-2 text-sm text-[#555555] leading-relaxed pr-8">
+                      {f.description}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Sağ: Görsel ızgarası */}
+          <div className="grid grid-cols-3 gap-2">
+            {GRID_IMAGES.map((src, i) => (
+              <div
+                key={i}
+                className="aspect-[3/4] overflow-hidden bg-[#e2efff] rounded-sm"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={src}
+                  alt={`Davetiye tasarımı ${i + 1}`}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
               </div>
-              <h3 className="font-display font-semibold text-lg text-neutral-800 mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-neutral-500 leading-relaxed">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+            ))}
+          </div>
+        </div>
       </Container>
     </section>
   );

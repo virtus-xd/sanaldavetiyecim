@@ -1,39 +1,57 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Renkler */
-  --color-primary:         #B8860B;
-  --color-primary-light:   #D4A017;
-  --color-primary-dark:    #8B6508;
-  --color-secondary:       #D4A0A0;
-  --color-secondary-light: #E8C4C4;
-  --color-secondary-dark:  #B07878;
-  --color-accent:          #800020;
-  --color-accent-light:    #A0002A;
-  --color-accent-dark:     #5C0018;
-  --color-cream:           #FDF8F0;
-  --color-cream-dark:      #F5EDD8;
-  --color-neutral-50:      #FAFAFA;
-  --color-neutral-100:     #F5F5F5;
-  --color-neutral-200:     #E5E5E5;
-  --color-neutral-300:     #D4D4D4;
-  --color-neutral-400:     #A3A3A3;
-  --color-neutral-500:     #737373;
-  --color-neutral-600:     #525252;
-  --color-neutral-700:     #404040;
-  --color-neutral-800:     #262626;
-  --color-neutral-900:     #171717;
+  /* PP Renk Paleti */
+  --color-primary:         #005ac8;
+  --color-primary-light:   #3f91f5;
+  --color-primary-dark:    #00479e;
+  --color-secondary:       #e2efff;
+  --color-secondary-light: #ecf4ff;
+  --color-secondary-dark:  #c6deff;
+  --color-accent:          #d70040;
+  --color-cream:           #fffbf5;
+  --color-cream-dark:      #fff7ec;
+  --color-neutral-50:      #f9f9f9;
+  --color-neutral-100:     #eeeeee;
+  --color-neutral-200:     #dddddd;
+  --color-neutral-300:     #bbbbbb;
+  --color-neutral-400:     #999999;
+  --color-neutral-500:     #767676;
+  --color-neutral-600:     #555555;
+  --color-neutral-700:     #333333;
+  --color-neutral-800:     #111111;
+  --color-neutral-900:     #000000;
 
   /* Fontlar */
   --font-sans:    var(--font-inter);
   --font-display: var(--font-playfair);
 
-  /* Border radius */
-  --radius-sm:   4px;
-  --radius-md:   8px;
-  --radius-lg:   12px;
-  --radius-xl:   16px;
-  --radius-2xl:  24px;
+  /* Border radius — PP daha köşeli */
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   6px;
+  --radius-xl:   8px;
+  --radius-2xl:  12px;
+
+  /* Davetiye tema renkleri — gold */
+  --color-gold-100: #F9F1D8;
+  --color-gold-200: #F0DEAA;
+  --color-gold-300: #E6C87F;
+  --color-gold-400: #DDB253;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #AA8C2C;
+  --color-gold-700: #806921;
+  --color-gold-800: #554616;
+  --color-gold-900: #2B230B;
+
+  /* Davetiye fontları */
+  --font-serif: "Playfair Display", serif;
+  --font-handwriting: "Pinyon Script", cursive;
+
+  /* Davetiye animasyonları */
+  --animate-fade-in: fade-in 1s ease-out;
+  --animate-fade-in-up: fade-in-up 1s ease-out forwards;
+  --animate-slide-up: slide-up 0.8s ease-out forwards;
 
   /* Admin dark theme */
   --color-admin-bg:      #0D0F14;
@@ -45,48 +63,66 @@
   --color-admin-gold:    #C49A1E;
 }
 
-/* Temel stiller */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
   background-color: #ffffff;
-  color: #171717;
+  color: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Başlık fontu */
+/* PP'de başlıklar da sans-serif — sadece özel display elementlerde serif */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-/* Özel scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #F5EDD8;
-}
-::-webkit-scrollbar-thumb {
-  background: #B8860B;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #8B6508;
-}
+/* PP scrollbar — minimal */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f9f9f9; }
+::-webkit-scrollbar-thumb { background: #bbbbbb; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #999999; }
 
-/* Focus ring */
 :focus-visible {
-  outline: 2px solid #B8860B;
+  outline: 2px solid #005ac8;
   outline-offset: 2px;
 }
 
-/* Geçiş animasyonu */
 * {
   transition-property: color, background-color, border-color, box-shadow, opacity, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+/* Davetiye tema animasyonları */
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Davetiye animation delay utilities */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+
+.fade-in {
+  animation: fade-in 0.6s ease-out;
 }
