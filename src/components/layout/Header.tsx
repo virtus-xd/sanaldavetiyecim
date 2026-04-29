@@ -1,79 +1,47 @@
 'use client';
 
-/**
- * Site başlık bileşeni.
- * - Scroll'da arka plan şeffaftan katıya geçer.
- * - Masaüstünde navigasyon linkleri ve "Sipariş Ver" CTA butonu.
- * - Mobilde hamburger menü açar.
- */
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu } from 'lucide-react';
+import { Menu, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { NAV_LINKS } from '@/lib/constants';
-import { Button } from '@/components/ui/Button';
 import { MobileMenu } from './MobileMenu';
 
 export function Header() {
-  const [scrolled,    setScrolled]    = useState(false);
-  const [menuOpen,    setMenuOpen]    = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  /** Rota değişince menüyü kapat */
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
 
   return (
     <>
-      <header
-        className={cn(
-          'fixed top-0 left-0 right-0 z-40',
-          'transition-all duration-300',
-          scrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-neutral-100'
-            : 'bg-transparent'
-        )}
-      >
+      <header className="fixed top-0 left-0 right-0 z-40 bg-white border-b border-[#dddddd]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-18">
-            {/* Logo */}
+          <div className="flex items-center justify-between h-14">
+
+            {/* Logo — PP wordmark stili */}
             <Link
               href="/"
-              className="flex items-center gap-2 group"
+              className="flex items-center shrink-0"
               aria-label="Sanal Davetiyecim — Ana Sayfa"
             >
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shrink-0">
-                <span className="text-white font-display font-bold text-sm">SD</span>
-              </div>
-              <span
-                className={cn(
-                  'font-display font-semibold text-lg transition-colors',
-                  scrolled ? 'text-neutral-800' : 'text-neutral-800'
-                )}
-              >
+              <span className="font-display italic text-xl font-bold tracking-tight text-black leading-none">
                 Sanal Davetiyecim
               </span>
             </Link>
 
-            {/* Masaüstü navigasyon */}
-            <nav className="hidden md:flex items-center gap-1" aria-label="Ana navigasyon">
-              {NAV_LINKS.map((link) => (
+            {/* Masaüstü navigasyon — ortada */}
+            <nav className="hidden md:flex items-center gap-0" aria-label="Ana navigasyon">
+              {NAV_LINKS.filter(l => l.href !== '/').map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+                    'px-3 py-1.5 text-[13px] font-medium transition-colors',
                     pathname === link.href
-                      ? 'text-primary bg-primary/8'
-                      : 'text-neutral-600 hover:text-primary hover:bg-primary/5'
+                      ? 'text-black'
+                      : 'text-[#555555] hover:text-black'
                   )}
                 >
                   {link.label}
@@ -81,15 +49,25 @@ export function Header() {
               ))}
             </nav>
 
-            {/* Sağ taraf */}
+            {/* Sağ taraf — Search + CTA */}
             <div className="flex items-center gap-3">
-              <Button asChild size="sm" className="hidden md:inline-flex">
-                <Link href="/siparis">Sipariş Ver</Link>
-              </Button>
+              <button
+                className="hidden md:flex items-center justify-center w-8 h-8 text-[#555555] hover:text-black transition-colors"
+                aria-label="Ara"
+              >
+                <Search size={18} />
+              </button>
+
+              <Link
+                href="/siparis"
+                className="hidden md:inline-flex items-center justify-center px-5 py-1.5 rounded bg-primary text-white text-[13px] font-semibold hover:bg-primary-dark transition-colors"
+              >
+                Sipariş Ver
+              </Link>
 
               {/* Mobil hamburger */}
               <button
-                className="md:hidden p-2 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors"
+                className="md:hidden p-1.5 text-[#555555] hover:text-black transition-colors"
                 onClick={() => setMenuOpen(true)}
                 aria-label="Menüyü aç"
                 aria-expanded={menuOpen}
@@ -101,7 +79,6 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobil menü */}
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
   );

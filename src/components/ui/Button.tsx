@@ -18,19 +18,19 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-primary text-white hover:bg-primary-dark shadow-sm hover:shadow-md',
+    'bg-primary text-white hover:bg-primary-dark',
   secondary:
-    'bg-secondary text-neutral-800 hover:bg-secondary-dark',
+    'bg-[#f9f9f9] text-[#333333] border border-[#dddddd] hover:border-[#999999]',
   outline:
-    'border border-primary text-primary hover:bg-primary hover:text-white',
+    'border border-black text-black hover:bg-black hover:text-white',
   ghost:
-    'text-primary hover:bg-primary/10',
+    'text-[#555555] hover:text-black hover:bg-[#f9f9f9]',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm:  'h-8  px-3 text-sm  rounded-md  gap-1.5',
-  md:  'h-10 px-5 text-sm  rounded-lg  gap-2',
-  lg:  'h-12 px-7 text-base rounded-xl gap-2.5',
+  sm:  'h-8  px-3 text-xs  gap-1.5',
+  md:  'h-10 px-5 text-sm  gap-2',
+  lg:  'h-11 px-7 text-sm  gap-2',
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -51,7 +51,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         disabled={disabled || loading}
         className={cn(
-          'inline-flex items-center justify-center font-medium',
+          'inline-flex items-center justify-center font-semibold tracking-wide',
           'transition-all duration-200 cursor-pointer',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
           'disabled:opacity-50 disabled:cursor-not-allowed',

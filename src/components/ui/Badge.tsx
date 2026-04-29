@@ -12,20 +12,20 @@ interface BadgeProps {
 }
 
 const variantStyles: Record<BadgeVariant, string> = {
-  primary:   'bg-primary/10  text-primary-dark',
-  secondary: 'bg-secondary/20 text-secondary-dark',
-  accent:    'bg-accent/10   text-accent',
-  success:   'bg-green-100   text-green-700',
-  warning:   'bg-yellow-100  text-yellow-700',
-  error:     'bg-red-100     text-red-700',
-  neutral:   'bg-neutral-100 text-neutral-600',
+  primary:   'bg-[#ecf4ff] text-primary border border-[#c6deff]',
+  secondary: 'bg-[#f9f9f9] text-[#555555] border border-[#dddddd]',
+  accent:    'bg-[#fde3e7] text-[#d70040] border border-[#f9b8c4]',
+  success:   'bg-[#e2f5e3] text-[#10a87a] border border-[#bbe9d2]',
+  warning:   'bg-[#fdf0d9] text-[#f69504] border border-[#ffd98e]',
+  error:     'bg-[#fde3e7] text-[#d70040] border border-[#f9b8c4]',
+  neutral:   'bg-[#f9f9f9] text-[#555555] border border-[#dddddd]',
 };
 
 export function Badge({ children, variant = 'primary', className }: BadgeProps) {
   return (
     <span
       className={cn(
-        'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium',
+        'inline-flex items-center px-2 py-0.5 text-[11px] font-medium uppercase tracking-wide',
         variantStyles[variant],
         className
       )}
