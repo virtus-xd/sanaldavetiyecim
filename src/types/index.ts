@@ -22,6 +22,8 @@ export type OrderStatus =
   | 'tamamlandi'
   | 'iptal';
 
+export type PaymentStatus = 'beklemede' | 'onaylandi' | 'iptal';
+
 // ─── Modeller ─────────────────────────────────────────────────────────────────
 
 /** Davetiye tasarım şablonu */
@@ -61,6 +63,10 @@ export interface Order {
   additionalNotes: string;
   totalPrice: number;
   deliveredUrl: string | null;
+  paymentStatus: PaymentStatus;
+  paymentMethod: string;
+  paymentNote: string | null;
+  paymentConfirmedAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

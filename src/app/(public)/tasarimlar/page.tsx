@@ -6,7 +6,7 @@ import { TemplateFilters }   from '@/components/templates/TemplateFilters';
 import { TemplateCard, TemplateCardSkeleton } from '@/components/templates/TemplateCard';
 import { getTemplates }      from '@/lib/data/templates';
 // Faz 6: Artık Supabase'den veri çekiyor
-import type { TemplateCategory, TemplateStyle } from '@/types';
+import type { TemplateStyle } from '@/types';
 
 export const metadata: Metadata = {
   title:       'Davetiye Tasarımları',
@@ -19,17 +19,15 @@ export const metadata: Metadata = {
 };
 
 interface PageProps {
-  searchParams: Promise<{ tur?: string; stil?: string }>;
+  searchParams: Promise<{ stil?: string }>;
 }
 
 export default async function TasarimlarPage({ searchParams }: PageProps) {
-  const params   = await searchParams;
-  const category = params.tur  as TemplateCategory | undefined;
-  const style    = params.stil as TemplateStyle    | undefined;
+  const params = await searchParams;
+  const style  = params.stil as TemplateStyle | undefined;
 
   const templates = await getTemplates({
-    category: category || undefined,
-    style:    style    || undefined,
+    style: style || undefined,
   });
 
   return (

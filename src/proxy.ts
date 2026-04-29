@@ -8,8 +8,11 @@ import { createServerClient } from '@supabase/ssr';
 export default async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // /admin/login hariç tüm /admin/* route'larını koru
-  if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
+  // /admin/login hariç tüm /admin/* ve /api/admin/* route'larını koru
+  const isAdminPage = pathname.startsWith('/admin') && pathname !== '/admin/login';
+  const isAdminApi  = pathname.startsWith('/api/admin');
+
+  if (isAdminPage || isAdminApi) {
     const response = NextResponse.next();
 
     const supabase = createServerClient(
@@ -31,6 +34,9 @@ export default async function proxy(request: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser();
 
     if (!user) {
+      if (isAdminApi) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      }
       const loginUrl = new URL('/admin/login', request.url);
       loginUrl.searchParams.set('redirectTo', pathname);
       return NextResponse.redirect(loginUrl);
@@ -41,5 +47,5 @@ export default async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: ['/admin/:path*', '/api/admin/:path*'],
 };

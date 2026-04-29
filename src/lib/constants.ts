@@ -2,7 +2,7 @@
  * Uygulama genelinde kullanılan sabit değerler
  */
 
-import type { EventType, TemplateStyle, OrderStatus } from '@/types';
+import type { EventType, TemplateStyle, OrderStatus, PaymentStatus } from '@/types';
 
 // ─── Navigasyon ───────────────────────────────────────────────────────────────
 
@@ -74,6 +74,30 @@ export const ORDER_STATUS_COLORS: Record<OrderStatus, string> = {
   tamamlandi:   'bg-green-100 text-green-800',
   iptal:        'bg-red-100 text-red-800',
 };
+
+// ─── Ödeme Durumları ──────────────────────────────────────────────────────────
+
+export const PAYMENT_STATUSES: Record<PaymentStatus, string> = {
+  beklemede: 'Ödeme Bekliyor',
+  onaylandi: 'Ödeme Onaylandı',
+  iptal:     'Ödeme İptal',
+};
+
+export const PAYMENT_STATUS_COLORS: Record<PaymentStatus, string> = {
+  beklemede: 'bg-orange-100 text-orange-800',
+  onaylandi: 'bg-emerald-100 text-emerald-800',
+  iptal:     'bg-red-100 text-red-800',
+};
+
+// ─── Banka Hesap Bilgileri ────────────────────────────────────────────────────
+
+export const BANK_ACCOUNTS = [
+  {
+    bankName: 'Ziraat Bankası',
+    accountHolder: 'Sanal Davetiyecim',
+    iban: 'TR00 0000 0000 0000 0000 0000 00',
+  },
+] as const;
 
 // ─── Sipariş Numarası Ön Eki ──────────────────────────────────────────────────
 

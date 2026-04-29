@@ -3,7 +3,7 @@
  */
 import { useFormContext } from 'react-hook-form';
 import { formatDate }    from '@/lib/utils';
-import { EVENT_TYPES }   from '@/lib/constants';
+import { EVENT_TYPES, BANK_ACCOUNTS } from '@/lib/constants';
 import { useTemplates } from '@/hooks/useTemplates';
 import type { OrderFormValues } from '@/lib/validations';
 
@@ -82,6 +82,33 @@ export function Step4Summary() {
         <span className="font-display text-2xl font-bold text-primary">
           ₺{price.toLocaleString('tr-TR')}
         </span>
+      </div>
+
+      {/* Ödeme Talimatları */}
+      <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+        <p className="text-xs font-semibold text-amber-700 uppercase tracking-wider mb-3">
+          Ödeme Bilgileri
+        </p>
+        <p className="text-sm text-amber-800 mb-3">
+          Siparişinizi onayladıktan sonra aşağıdaki hesaba havale/EFT yapmanız gerekmektedir.
+          Açıklama kısmına <strong>sipariş numaranızı</strong> yazmayı unutmayın.
+        </p>
+        {BANK_ACCOUNTS.map((account) => (
+          <div key={account.iban} className="bg-white rounded-lg p-3 text-sm space-y-1">
+            <div className="flex justify-between">
+              <span className="text-neutral-500">Banka</span>
+              <span className="font-medium text-neutral-800">{account.bankName}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-neutral-500">Hesap Sahibi</span>
+              <span className="font-medium text-neutral-800">{account.accountHolder}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-neutral-500">IBAN</span>
+              <span className="font-mono text-xs font-medium text-neutral-800">{account.iban}</span>
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Onay checkbox */}
