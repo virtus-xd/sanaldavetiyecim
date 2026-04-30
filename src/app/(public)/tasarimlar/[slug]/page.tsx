@@ -3,7 +3,7 @@ import Link                from 'next/link';
 import type { Metadata }   from 'next';
 import { ArrowLeft, ArrowRight, CheckCircle2, Eye } from 'lucide-react';
 import { getTemplateBySlug, getRelatedTemplates, getTemplates } from '@/lib/data/templates';
-import { SLUG_TO_THEME } from '@/components/invitation-themes/themes.config';
+import { hasPreview as hasPreviewSlug } from '@/components/invitation-themes/theme-slugs';
 import { formatPrice }     from '@/lib/utils';
 import { Container }       from '@/components/ui/Container';
 import { Button }          from '@/components/ui/Button';
@@ -75,7 +75,7 @@ export default async function TasarimDetayPage({ params }: PageProps) {
 
   if (!template) notFound();
 
-  const hasPreview = slug in SLUG_TO_THEME;
+  const hasPreview = hasPreviewSlug(slug);
   const related = await getRelatedTemplates(template);
 
   const jsonLd = {

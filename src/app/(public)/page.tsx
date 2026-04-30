@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { HeroSection }         from '@/components/home/HeroSection';
+import { FeaturesSection }     from '@/components/home/FeaturesSection';
 import { PopularTemplates }    from '@/components/home/PopularTemplates';
 import { HowItWorksSection }   from '@/components/home/HowItWorksSection';
 import { TestimonialsSection } from '@/components/home/TestimonialsSection';
-import { CTABanner }           from '@/components/home/CTABanner';
 import { getPopularTemplates } from '@/lib/data/templates';
 import { getVisibleTestimonials } from '@/lib/data/testimonials';
 import { SITE_META } from '@/lib/constants';
@@ -47,10 +47,10 @@ export default async function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
       />
       <HeroSection />
+      <FeaturesSection />
       <PopularTemplates templates={templates} />
       <HowItWorksSection />
       <TestimonialsSection testimonials={testimonials} />
-      <CTABanner />
     </>
   );
 }

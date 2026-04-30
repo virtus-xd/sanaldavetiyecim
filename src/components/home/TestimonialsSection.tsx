@@ -28,7 +28,7 @@ export function TestimonialsSection({ testimonials }: { testimonials: Testimonia
   };
 
   return (
-    <section className="py-20 md:py-28 bg-[#fffbf5] border-t border-[#eeeeee]" aria-label="Müşteri Yorumları">
+    <section className="py-20 md:py-28 border-t border-[#d9cfb8]" aria-label="Müşteri Yorumları">
       <Container>
         <div className="flex items-end justify-between mb-10">
           <div>
@@ -38,14 +38,14 @@ export function TestimonialsSection({ testimonials }: { testimonials: Testimonia
           <div className="flex gap-2 shrink-0">
             <button
               onClick={() => scroll('left')}
-              className="w-9 h-9 border border-[#dddddd] bg-white flex items-center justify-center text-[#555555] hover:border-black hover:text-black transition-colors"
+              className="w-9 h-9 border border-[#d9cfb8] bg-blush-soft flex items-center justify-center text-[#555555] hover:border-sage hover:text-black transition-colors"
               aria-label="Önceki yorum"
             >
               <ChevronLeft size={16} />
             </button>
             <button
               onClick={() => scroll('right')}
-              className="w-9 h-9 border border-[#dddddd] bg-white flex items-center justify-center text-[#555555] hover:border-black hover:text-black transition-colors"
+              className="w-9 h-9 border border-[#d9cfb8] bg-blush-soft flex items-center justify-center text-[#555555] hover:border-sage hover:text-black transition-colors"
               aria-label="Sonraki yorum"
             >
               <ChevronRight size={16} />
@@ -61,7 +61,7 @@ export function TestimonialsSection({ testimonials }: { testimonials: Testimonia
           {testimonials.map((t) => (
             <article
               key={t.id}
-              className="flex-none w-72 snap-start bg-white border border-[#eeeeee] p-6 hover:border-[#999999] transition-colors"
+              className="flex-none w-72 snap-start bg-blush-soft border border-[#e6dcc4] p-6 hover:border-sage transition-colors"
             >
               <StarRating rating={t.rating} />
               <p className="text-sm text-[#333333] leading-relaxed my-4 line-clamp-4">

@@ -7,14 +7,14 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white border-t border-[#dddddd]">
+    <footer className="bg-blush-deep/40 border-t border-[#d9cfb8]">
       <Container className="py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
 
           {/* Logo + açıklama */}
           <div className="md:col-span-1 flex flex-col gap-4">
             <Link href="/" className="inline-block">
-              <span className="font-display italic text-lg font-bold tracking-tight text-black">
+              <span className="font-display italic text-lg font-bold tracking-tight text-brand">
                 Sanal Davetiyecim
               </span>
             </Link>
@@ -119,7 +119,7 @@ export function Footer() {
         </div>
 
         {/* Alt çizgi */}
-        <div className="mt-12 pt-6 border-t border-[#eeeeee] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#999999]">
+        <div className="mt-12 pt-6 border-t border-[#d9cfb8] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#999999]">
           <p>© {currentYear} {SITE_META.name}. Tüm hakları saklıdır.</p>
           <p>Türkiye&apos;de sevgiyle yapılmıştır.</p>
         </div>

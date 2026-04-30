@@ -11,6 +11,16 @@
   --color-accent:          #d70040;
   --color-cream:           #fffbf5;
   --color-cream-dark:      #fff7ec;
+  /* Soft pastel — hero watercolor görseliyle uyumlu cream / sage paleti */
+  --color-blush:           #f4ecdf;
+  --color-blush-deep:      #ebdec6;
+  --color-blush-soft:      #faf3e7;
+  --color-sage:            #9eaa92;
+  --color-sage-soft:       #c4cdb6;
+  --color-warm-tan:        #cfc1a6;
+  /* Marka altın rengi — logo wordmark tonu */
+  --color-brand:           #b8924a;
+  --color-brand-deep:      #8e6f33;
   --color-neutral-50:      #f9f9f9;
   --color-neutral-100:     #eeeeee;
   --color-neutral-200:     #dddddd;
@@ -69,10 +79,19 @@ html {
 
 body {
   font-family: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
-  background-color: #ffffff;
+  background-color: var(--color-blush);
   color: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Duvar kağıdı dokusu — fleurette motif + grain + ton dalgalanması */
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'><g fill='%238a6a3a' fill-opacity='0.13'><circle cx='48' cy='48' r='1.7'/><ellipse cx='48' cy='39' rx='1' ry='3.4'/><ellipse cx='48' cy='57' rx='1' ry='3.4'/><ellipse cx='39' cy='48' rx='3.4' ry='1'/><ellipse cx='57' cy='48' rx='3.4' ry='1'/><circle cx='0' cy='0' r='1'/><circle cx='96' cy='0' r='1'/><circle cx='0' cy='96' r='1'/><circle cx='96' cy='96' r='1'/><circle cx='48' cy='0' r='0.7' fill-opacity='0.08'/><circle cx='0' cy='48' r='0.7' fill-opacity='0.08'/><circle cx='96' cy='48' r='0.7' fill-opacity='0.08'/><circle cx='48' cy='96' r='0.7' fill-opacity='0.08'/></g></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.55  0 0 0 0 0.45  0 0 0 0 0.35  0 0 0 0.22 0'/></filter><rect width='100%25' height='100%25' filter='url(%23g)'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='1200'><filter id='v'><feTurbulence type='fractalNoise' baseFrequency='0.004' numOctaves='2' seed='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.98  0 0 0 0 0.92  0 0 0 0 0.85  0 0 0 0.35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23v)'/></svg>");
+  background-size: 96px 96px, 240px 240px, 1200px 1200px;
+  background-repeat: repeat, repeat, repeat;
+  background-attachment: fixed, fixed, fixed;
+  background-blend-mode: multiply, multiply, soft-light;
 }
 
 /* PP'de başlıklar da sans-serif — sadece özel display elementlerde serif */
@@ -126,3 +145,32 @@ h1, h2, h3, h4, h5, h6 {
 .fade-in {
   animation: fade-in 0.6s ease-out;
 }
+
+/* Kağıt dokusu — grain + soft fiber katmanı */
+.bg-grain {
+  position: relative;
+  isolation: isolate;
+}
+.bg-grain::before,
+.bg-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+/* Sert grain katmanı */
+.bg-grain::before {
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.32  0 0 0 0 0.28  0 0 0 0.32 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 320px 320px;
+}
+/* Yumuşak fiber katmanı */
+.bg-grain::after {
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='0.012 0.06' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.85  0 0 0 0 0.6  0 0 0 0 0.55  0 0 0 0.35 0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+  background-size: 600px 600px;
+}
+.bg-grain > * { position: relative; z-index: 1; }

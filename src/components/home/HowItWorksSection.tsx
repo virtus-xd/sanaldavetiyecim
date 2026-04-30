@@ -29,7 +29,7 @@ const steps = [
 
 export function HowItWorksSection() {
   return (
-    <section className="py-20 md:py-28 bg-white border-t border-[#eeeeee]" aria-label="Nasıl Çalışır">
+    <section className="py-20 md:py-28 bg-blush-deep/40 border-y border-[#d9cfb8]" aria-label="Nasıl Çalışır">
       <Container>
         {/* Üst: Başlık ortada */}
         <div className="text-center max-w-2xl mx-auto mb-16">
@@ -47,7 +47,7 @@ export function HowItWorksSection() {
           {steps.map((step) => (
             <div
               key={step.title}
-              className="p-6 border border-[#eeeeee] hover:border-[#999999] transition-colors group"
+              className="p-6 bg-blush-soft border border-[#e6dcc4] hover:border-sage transition-colors group"
             >
               <div className="w-10 h-10 flex items-center justify-center text-primary mb-5">
                 <step.icon size={24} aria-hidden="true" />

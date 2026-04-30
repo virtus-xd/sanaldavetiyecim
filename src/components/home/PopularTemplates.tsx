@@ -12,7 +12,7 @@ interface PopularTemplatesProps {
 
 export function PopularTemplates({ templates }: PopularTemplatesProps) {
   return (
-    <section className="py-20 md:py-28 bg-white" aria-label="Popüler Tasarımlar">
+    <section className="py-20 md:py-28" aria-label="Popüler Tasarımlar">
       <Container>
         {/* Başlık */}
         <div className="flex items-end justify-between mb-10">
@@ -35,7 +35,7 @@ export function PopularTemplates({ templates }: PopularTemplatesProps) {
               className="group block"
             >
               {/* Görsel */}
-              <div className="relative aspect-[3/4] overflow-hidden bg-[#f9f9f9] mb-3">
+              <div className="relative aspect-[3/4] overflow-hidden bg-blush-soft border border-[#e6dcc4] mb-3">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={template.previewImages[0]}
