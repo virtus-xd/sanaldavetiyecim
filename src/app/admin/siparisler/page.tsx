@@ -15,17 +15,22 @@ interface PageProps {
 }
 
 async function getOrders(status?: string, q?: string) {
-  const supabase = createAdminClient();
-  let query = supabase
-    .from('orders')
-    .select('*, templates(name)')
-    .order('created_at', { ascending: false });
+  try {
+    const supabase = createAdminClient();
+    let query = supabase
+      .from('orders')
+      .select('*, templates(name)')
+      .order('created_at', { ascending: false });
 
-  if (status && status !== 'hepsi') query = query.eq('status', status);
-  if (q) query = query.or(`customer_name.ilike.%${q}%,order_number.ilike.%${q}%`);
+    if (status && status !== 'hepsi') query = query.eq('status', status);
+    if (q) query = query.or(`customer_name.ilike.%${q}%,order_number.ilike.%${q}%`);
 
-  const { data } = await query;
-  return data ?? [];
+    const { data } = await query;
+    return data ?? [];
+  } catch (err) {
+    console.error('getOrders error:', err);
+    return [];
+  }
 }
 
 const STATUS_STYLES: Record<OrderStatus, { label: string; color: string; bg: string; dot: string }> = {
@@ -157,8 +162,7 @@ export default async function SiparislerPage({ searchParams }: PageProps) {
                     <tr
                       key={order.id}
                       style={{ borderBottom: idx < orders.length - 1 ? '1px solid #1D2029' : 'none' }}
-                      onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.02)')}
-                      onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+                      className="transition-colors hover:bg-[rgba(255,255,255,0.02)]"
                     >
                       <td className="px-4 py-3.5">
                         <span className="text-[11.5px] font-mono" style={{ color: '#B8860B' }}>

@@ -19,12 +19,12 @@ const features = [
 ];
 
 const GRID_IMAGES = [
-  '/template-previews/classic_section_1.png',
-  '/template-previews/gatsby_section_1.png',
-  '/template-previews/floral_section_1.png',
-  '/template-previews/starry_section_1.png',
-  '/template-previews/rustic_section_1.png',
-  '/template-previews/autumn_section_1.png',
+  '/themes/classic/preview-section-1.png',
+  '/themes/gatsby/preview-section-1.png',
+  '/themes/floral/preview-section-1.png',
+  '/themes/starry/preview-section-1.png',
+  '/themes/rustic/preview-section-1.png',
+  '/themes/autumn/preview-section-1.png',
 ];
 
 export function FeaturesSection() {

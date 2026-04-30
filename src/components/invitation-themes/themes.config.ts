@@ -3,7 +3,7 @@
  *
  * Yeni tema eklemek için:
  *   1. src/components/invitation-themes/{key}/ altına HeroSection, EventDetailsSection, Footer ekle
- *   2. public/invitation-assets/ altına {key}-envelope.png (ve istersen {key}-bg.png) koy
+ *   2. public/themes/{key}/ altına envelope.png (ve istersen bg.png) koy
  *   3. Aşağıdaki THEME_REGISTRY objesine yeni bir blok ekle
  *
  * ThemeKey, slug haritası ve renderer otomatik olarak buradan türer.
@@ -70,8 +70,8 @@ export const THEME_REGISTRY = {
     label: 'Zarif Altın',
     slug: 'zarif-altin',
     envelope: {
-      desktop: '/invitation-assets/envelope.png',
-      mobile: '/invitation-assets/envelopemobil.jpg',
+      desktop: '/themes/classic/envelope.png',
+      mobile: '/themes/classic/envelope-mobile.jpg',
     },
     Hero: ClassicHero,
     EventDetails: ClassicEventDetails,
@@ -80,7 +80,7 @@ export const THEME_REGISTRY = {
   modern: {
     label: 'Modern Minimal',
     slug: 'modern-minimal',
-    envelope: { desktop: '/invitation-assets/modern-envelope.png' },
+    envelope: { desktop: '/themes/modern/envelope.png' },
     Hero: ModernHero,
     EventDetails: ModernEventDetails,
     Footer: ModernFooter,
@@ -88,7 +88,7 @@ export const THEME_REGISTRY = {
   floral: {
     label: 'Romantik Gül',
     slug: 'romantik-gul',
-    envelope: { desktop: '/invitation-assets/floral-envelope.png' },
+    envelope: { desktop: '/themes/floral/envelope.png' },
     Hero: FloralHero,
     EventDetails: FloralEventDetails,
     Footer: FloralFooter,
@@ -96,7 +96,7 @@ export const THEME_REGISTRY = {
   starry: {
     label: 'Klasik Lacivert',
     slug: 'klasik-lacivert',
-    envelope: { desktop: '/invitation-assets/starry-envelope.png' },
+    envelope: { desktop: '/themes/starry/envelope.png' },
     Hero: StarryHero,
     EventDetails: StarryEventDetails,
     Footer: StarryFooter,
@@ -104,7 +104,7 @@ export const THEME_REGISTRY = {
   vintage: {
     label: 'Bahar Çiçekleri',
     slug: 'bahar-cicekleri',
-    envelope: { desktop: '/invitation-assets/vintage-envelope.png' },
+    envelope: { desktop: '/themes/vintage/envelope.png' },
     Hero: VintageHero,
     EventDetails: VintageEventDetails,
     Footer: VintageFooter,
@@ -112,7 +112,7 @@ export const THEME_REGISTRY = {
   autumn: {
     label: 'Kına Gecesi',
     slug: 'kina-gecesi',
-    envelope: { desktop: '/invitation-assets/autumn-envelope.png' },
+    envelope: { desktop: '/themes/autumn/envelope.png' },
     Hero: AutumnHero,
     EventDetails: AutumnEventDetails,
     Footer: AutumnFooter,
@@ -120,7 +120,7 @@ export const THEME_REGISTRY = {
   rustic: {
     label: 'Boho Doğa',
     slug: 'boho-doga',
-    envelope: { desktop: '/invitation-assets/rustic-envelope.png' },
+    envelope: { desktop: '/themes/rustic/envelope.png' },
     Hero: RusticHero,
     EventDetails: RusticEventDetails,
     Footer: RusticFooter,
@@ -128,7 +128,7 @@ export const THEME_REGISTRY = {
   gatsby: {
     label: 'Siyah Beyaz',
     slug: 'siyah-beyaz',
-    envelope: { desktop: '/invitation-assets/gatsby-envelope.png' },
+    envelope: { desktop: '/themes/gatsby/envelope.png' },
     Hero: GatsbyHero,
     EventDetails: GatsbyEventDetails,
     Footer: GatsbyFooter,
@@ -136,7 +136,7 @@ export const THEME_REGISTRY = {
   ocean: {
     label: 'Okyanus',
     slug: 'okyanus',
-    envelope: { desktop: '/invitation-assets/ocean-envelope.png' },
+    envelope: { desktop: '/themes/ocean/envelope.png' },
     Hero: OceanHero,
     EventDetails: OceanEventDetails,
     Footer: OceanFooter,
@@ -145,8 +145,8 @@ export const THEME_REGISTRY = {
     label: 'Zerafet',
     slug: 'zerafet',
     envelope: {
-      desktop: '/invitation-assets/flowers-pink-envelope.png',
-      mobile: '/invitation-assets/flowers-pink-envelopemobil.png',
+      desktop: '/themes/flowers-pink/envelope.png',
+      mobile: '/themes/flowers-pink/envelope-mobile.png',
     },
     Hero: FlowersPinkHero,
     EventDetails: FlowersPinkEventDetails,

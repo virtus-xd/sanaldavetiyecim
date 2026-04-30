@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
 
 const PREVIEW_IMAGES = [
-  '/template-previews/floral_cover.png',
-  '/template-previews/gatsby_cover.png',
-  '/template-previews/starry_cover.png',
-  '/template-previews/classic_cover.png',
+  '/themes/floral/preview-cover.png',
+  '/themes/gatsby/preview-cover.png',
+  '/themes/starry/preview-cover.png',
+  '/themes/classic/preview-cover.png',
 ];
 
 export function HeroSection() {

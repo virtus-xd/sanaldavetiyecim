@@ -40,7 +40,7 @@ export default function HeroSection() {
         <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-rose-50 text-stone-800">
             {/* Soft Floral Background */}
             <div
-                className="absolute inset-0 bg-[url('/invitation-assets/floral-bg.png')] bg-cover bg-center bg-no-repeat opacity-40 pointer-events-none"
+                className="absolute inset-0 bg-[url('/themes/floral/bg.png')] bg-cover bg-center bg-no-repeat opacity-40 pointer-events-none"
             />
             {/* White Soft Gradient Overlay to ensure text readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-rose-50/80 via-transparent to-rose-50/80 pointer-events-none" />

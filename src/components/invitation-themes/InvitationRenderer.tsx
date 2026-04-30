@@ -31,7 +31,7 @@ export default function InvitationRenderer({ data, theme }: InvitationRendererPr
 
   return (
     <InvitationProvider data={data}>
-      <MusicPlayer src="/invitation-assets/music.mp3" startPlaying={musicStarted} />
+      <MusicPlayer src="/themes/_shared/music.mp3" startPlaying={musicStarted} />
       <div className="fade-in">
         <Hero />
         <EventDetails />

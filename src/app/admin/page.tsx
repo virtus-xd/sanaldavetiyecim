@@ -6,38 +6,50 @@ export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import { ShoppingBag, Clock, CheckCircle2, Mail, ArrowUpRight } from 'lucide-react';
 import { createAdminClient } from '@/lib/supabase/server';
-import { formatPrice, formatDate } from '@/lib/utils';
-import { ORDER_STATUSES } from '@/lib/constants';
+import { formatPrice } from '@/lib/utils';
 import type { OrderStatus } from '@/types';
 
 async function getDashboardData() {
-  const supabase = createAdminClient();
+  try {
+    const supabase = createAdminClient();
 
-  const [
-    { count: totalOrders },
-    { count: pendingOrders },
-    { count: unreadMessages },
-    { count: completedOrders },
-    { data: recentOrders },
-  ] = await Promise.all([
-    supabase.from('orders').select('*', { count: 'exact', head: true }),
-    supabase.from('orders').select('*', { count: 'exact', head: true }).eq('status', 'beklemede'),
-    supabase.from('contact_messages').select('*', { count: 'exact', head: true }).eq('is_read', false),
-    supabase.from('orders').select('*', { count: 'exact', head: true }).eq('status', 'tamamlandi'),
-    supabase
-      .from('orders')
-      .select('id, order_number, customer_name, event_type, status, total_price, created_at')
-      .order('created_at', { ascending: false })
-      .limit(6),
-  ]);
+    const [
+      { count: totalOrders },
+      { count: pendingOrders },
+      { count: unreadMessages },
+      { count: completedOrders },
+      { data: recentOrders },
+    ] = await Promise.all([
+      supabase.from('orders').select('*', { count: 'exact', head: true }),
+      supabase.from('orders').select('*', { count: 'exact', head: true }).eq('status', 'beklemede'),
+      supabase.from('contact_messages').select('*', { count: 'exact', head: true }).eq('is_read', false),
+      supabase.from('orders').select('*', { count: 'exact', head: true }).eq('status', 'tamamlandi'),
+      supabase
+        .from('orders')
+        .select('id, order_number, customer_name, event_type, status, total_price, created_at')
+        .order('created_at', { ascending: false })
+        .limit(6),
+    ]);
 
-  return {
-    totalOrders:     totalOrders     ?? 0,
-    pendingOrders:   pendingOrders   ?? 0,
-    unreadMessages:  unreadMessages  ?? 0,
-    completedOrders: completedOrders ?? 0,
-    recentOrders:    recentOrders    ?? [],
-  };
+    return {
+      totalOrders:     totalOrders     ?? 0,
+      pendingOrders:   pendingOrders   ?? 0,
+      unreadMessages:  unreadMessages  ?? 0,
+      completedOrders: completedOrders ?? 0,
+      recentOrders:    recentOrders    ?? [],
+      error: null as string | null,
+    };
+  } catch (err) {
+    console.error('getDashboardData error:', err);
+    return {
+      totalOrders: 0,
+      pendingOrders: 0,
+      unreadMessages: 0,
+      completedOrders: 0,
+      recentOrders: [] as Record<string, unknown>[],
+      error: err instanceof Error ? err.message : 'Bilinmeyen hata',
+    };
+  }
 }
 
 const STATUS_STYLES: Record<OrderStatus, { label: string; color: string; bg: string; dot: string }> = {
@@ -48,7 +60,7 @@ const STATUS_STYLES: Record<OrderStatus, { label: string; color: string; bg: str
 };
 
 export default async function AdminDashboard() {
-  const { totalOrders, pendingOrders, unreadMessages, completedOrders, recentOrders } = await getDashboardData();
+  const { totalOrders, pendingOrders, unreadMessages, completedOrders, recentOrders, error } = await getDashboardData();
 
   const stats = [
     {
@@ -102,6 +114,16 @@ export default async function AdminDashboard() {
           {new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })}
         </div>
       </div>
+
+      {/* Hata mesajı */}
+      {error && (
+        <div
+          className="rounded-xl p-4 text-[13px]"
+          style={{ background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.2)', color: '#F87171' }}
+        >
+          Veritabanına bağlanırken hata oluştu: {error}
+        </div>
+      )}
 
       {/* Stat kartları */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
@@ -175,12 +197,10 @@ export default async function AdminDashboard() {
                   return (
                     <tr
                       key={order.id}
-                      className="group transition-colors"
+                      className="transition-colors hover:bg-[rgba(255,255,255,0.02)]"
                       style={{
                         borderBottom: idx < recentOrders.length - 1 ? '1px solid #1D2029' : 'none',
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.02)')}
-                      onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                     >
                       <td className="px-5 py-3.5">
                         <span

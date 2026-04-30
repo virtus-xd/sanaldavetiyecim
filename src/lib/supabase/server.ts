@@ -30,11 +30,18 @@ export async function createClient() {
 
 /** Servis rolü ile Supabase istemcisi — sadece API route'larında, RLS bypass için */
 export function createAdminClient() {
-  const { createClient } = require('@supabase/supabase-js');
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  );
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!url || !key) {
+    throw new Error(
+      'createAdminClient: NEXT_PUBLIC_SUPABASE_URL veya SUPABASE_SERVICE_ROLE_KEY tanımlanmamış.'
+    );
+  }
+
+  // @supabase/supabase-js createClient (servis rolü ile)
+  const { createClient: supabaseCreateClient } = require('@supabase/supabase-js');
+  return supabaseCreateClient(url, key);
 }
 
 /** Admin API route'larında session doğrulama — oturum yoksa false döner */

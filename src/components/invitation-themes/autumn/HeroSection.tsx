@@ -40,7 +40,7 @@ export default function HeroSection() {
         <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-orange-50 text-stone-900">
             {/* Autumn Watercolor Background */}
             <div
-                className="absolute inset-0 bg-[url('/invitation-assets/autumn-bg.png')] bg-cover bg-center bg-no-repeat opacity-50 pointer-events-none mix-blend-multiply"
+                className="absolute inset-0 bg-[url('/themes/autumn/bg.png')] bg-cover bg-center bg-no-repeat opacity-50 pointer-events-none mix-blend-multiply"
             />
             {/* Warm gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-orange-100/80 via-transparent to-orange-50/60 pointer-events-none" />

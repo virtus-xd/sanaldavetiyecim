@@ -1,0 +1,9 @@
+- generic [active]:
+  - generic:
+    - button "Sesi kapat" [ref=e2] [cursor=pointer]:
+      - img [ref=e3]
+    - generic [ref=e7]:
+      - generic:
+        - paragraph: DAVETİYEYİ AÇMAK İÇİN DOKUN
+    - button "Temayı Değiştir" [ref=e10] [cursor=pointer]:
+      - img [ref=e11]

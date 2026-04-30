@@ -7,7 +7,7 @@ export default function Footer() {
     const invitationData = useInvitationData();
     return (
         <footer className="py-24 px-6 bg-[#fdfaf9] text-[#3a3f38] relative overflow-hidden">
-            <div className="absolute inset-0 bg-[url('/invitation-assets/flowers-pink-bg.png')] bg-cover bg-bottom bg-no-repeat opacity-20 pointer-events-none mix-blend-multiply" />
+            <div className="absolute inset-0 bg-[url('/themes/flowers-pink/bg.png')] bg-cover bg-bottom bg-no-repeat opacity-20 pointer-events-none mix-blend-multiply" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#fdfaf9]/90 to-transparent pointer-events-none" />
 
             <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10 bg-white/50 backdrop-blur-sm p-12 rounded-[4rem] border border-[#f0e4e4] shadow-sm">

@@ -40,7 +40,7 @@ export default function HeroSection() {
         <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-sky-50 text-slate-800">
             {/* Ocean Watercolor Background */}
             <div
-                className="absolute inset-0 bg-[url('/invitation-assets/ocean-bg.png')] bg-cover bg-center bg-no-repeat opacity-50 pointer-events-none"
+                className="absolute inset-0 bg-[url('/themes/ocean/bg.png')] bg-cover bg-center bg-no-repeat opacity-50 pointer-events-none"
             />
             {/* Soft gradient overlay for readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-sky-100/90 via-sky-50/40 to-sky-100/90 pointer-events-none" />
