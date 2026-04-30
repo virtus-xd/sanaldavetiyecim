@@ -1,9 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient, verifyAdminSession } from '@/lib/supabase/server';
-import { EVENT_TYPES, TEMPLATE_STYLES } from '@/lib/constants';
-
-const VALID_CATEGORIES = Object.keys(EVENT_TYPES);
-const VALID_STYLES     = Object.keys(TEMPLATE_STYLES);
 
 export async function PATCH(
   request: NextRequest,
@@ -43,20 +39,6 @@ export async function PATCH(
       return NextResponse.json({ error: 'description metin olmalı' }, { status: 400 });
     }
     updates.description = body.description;
-  }
-
-  if (body.category !== undefined) {
-    if (typeof body.category !== 'string' || !VALID_CATEGORIES.includes(body.category)) {
-      return NextResponse.json({ error: 'category geçersiz' }, { status: 400 });
-    }
-    updates.category = body.category;
-  }
-
-  if (body.style !== undefined) {
-    if (typeof body.style !== 'string' || !VALID_STYLES.includes(body.style)) {
-      return NextResponse.json({ error: 'style geçersiz' }, { status: 400 });
-    }
-    updates.style = body.style;
   }
 
   if (body.price !== undefined) {

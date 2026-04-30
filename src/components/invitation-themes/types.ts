@@ -36,13 +36,4 @@ export interface InvitationData {
   footer: InvitationFooter;
 }
 
-export type ThemeKey =
-  | 'classic'
-  | 'floral'
-  | 'modern'
-  | 'rustic'
-  | 'ocean'
-  | 'starry'
-  | 'autumn'
-  | 'gatsby'
-  | 'vintage';
+export type { ThemeKey } from './themes.config';

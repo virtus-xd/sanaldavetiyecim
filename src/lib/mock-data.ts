@@ -9,8 +9,6 @@ export const mockTemplates: Template[] = [
     id:            '1',
     name:          'Zarif Altın',
     slug:          'zarif-altin',
-    category:      'dugun',
-    style:         'luks',
     previewImages: [
       'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80',
       'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80',
@@ -27,8 +25,6 @@ export const mockTemplates: Template[] = [
     id:            '2',
     name:          'Modern Minimal',
     slug:          'modern-minimal',
-    category:      'dugun',
-    style:         'minimal',
     previewImages: [
       'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&q=80',
     ],
@@ -44,8 +40,6 @@ export const mockTemplates: Template[] = [
     id:            '3',
     name:          'Romantik Gül',
     slug:          'romantik-gul',
-    category:      'nisan',
-    style:         'romantik',
     previewImages: [
       'https://images.unsplash.com/photo-1518049362265-d5b2a6467637?w=600&q=80',
     ],
@@ -61,8 +55,6 @@ export const mockTemplates: Template[] = [
     id:            '4',
     name:          'Klasik Lacivert',
     slug:          'klasik-lacivert',
-    category:      'dugun',
-    style:         'klasik',
     previewImages: [
       'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80',
     ],
@@ -78,8 +70,6 @@ export const mockTemplates: Template[] = [
     id:            '5',
     name:          'Bahar Çiçekleri',
     slug:          'bahar-cicekleri',
-    category:      'soz',
-    style:         'romantik',
     previewImages: [
       'https://images.unsplash.com/photo-1490750967868-88df5691cc11?w=600&q=80',
     ],
@@ -95,8 +85,6 @@ export const mockTemplates: Template[] = [
     id:            '6',
     name:          'Kına Gecesi',
     slug:          'kina-gecesi',
-    category:      'kina',
-    style:         'eglenceli',
     previewImages: [
       'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80',
     ],
@@ -112,8 +100,6 @@ export const mockTemplates: Template[] = [
     id:            '7',
     name:          'Boho Doğa',
     slug:          'boho-doga',
-    category:      'dugun',
-    style:         'modern',
     previewImages: [
       'https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&q=80',
     ],
@@ -129,8 +115,6 @@ export const mockTemplates: Template[] = [
     id:            '8',
     name:          'Siyah & Beyaz',
     slug:          'siyah-beyaz',
-    category:      'dugun',
-    style:         'modern',
     previewImages: [
       'https://images.unsplash.com/photo-1522413452208-996ff3f3e740?w=600&q=80',
     ],

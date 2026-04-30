@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { formatPrice } from '@/lib/utils';
 import type { Template } from '@/types';
-import { EVENT_TYPES, TEMPLATE_STYLES } from '@/lib/constants';
 import { Container } from '@/components/ui/Container';
 
 interface PopularTemplatesProps {
@@ -53,9 +52,6 @@ export function PopularTemplates({ templates }: PopularTemplatesProps) {
 
               {/* Bilgi */}
               <div>
-                <p className="text-xs text-[#767676] mb-0.5 uppercase tracking-wider">
-                  {EVENT_TYPES[template.category]} · {TEMPLATE_STYLES[template.style]}
-                </p>
                 <div className="flex items-center justify-between gap-2">
                   <h3 className="text-sm font-semibold text-black leading-tight group-hover:text-primary transition-colors">
                     {template.name}

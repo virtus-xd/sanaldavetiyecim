@@ -4,8 +4,6 @@
 import Link from 'next/link';
 import { Eye, ArrowRight } from 'lucide-react';
 import { formatPrice } from '@/lib/utils';
-import { EVENT_TYPES, TEMPLATE_STYLES } from '@/lib/constants';
-import { Badge } from '@/components/ui/Badge';
 import type { Template } from '@/types';
 
 interface TemplateCardProps {
@@ -64,14 +62,9 @@ export function TemplateCard({ template }: TemplateCardProps) {
           </span>
         </div>
 
-        <p className="text-neutral-500 text-sm leading-relaxed mb-4 line-clamp-2">
+        <p className="text-neutral-500 text-sm leading-relaxed line-clamp-2">
           {template.description}
         </p>
-
-        <div className="flex items-center gap-2">
-          <Badge variant="primary">{EVENT_TYPES[template.category]}</Badge>
-          <Badge variant="neutral">{TEMPLATE_STYLES[template.style]}</Badge>
-        </div>
       </div>
     </article>
   );
@@ -89,10 +82,6 @@ export function TemplateCardSkeleton() {
         </div>
         <div className="h-4 bg-neutral-100 rounded w-full" />
         <div className="h-4 bg-neutral-100 rounded w-3/4" />
-        <div className="flex gap-2">
-          <div className="h-6 bg-neutral-100 rounded-full w-16" />
-          <div className="h-6 bg-neutral-100 rounded-full w-16" />
-        </div>
       </div>
     </div>
   );

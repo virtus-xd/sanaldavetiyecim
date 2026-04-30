@@ -4,7 +4,6 @@ import type { Metadata }   from 'next';
 import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { getTemplateBySlug, getRelatedTemplates, getTemplates } from '@/lib/data/templates';
 import { formatPrice }     from '@/lib/utils';
-import { EVENT_TYPES, TEMPLATE_STYLES } from '@/lib/constants';
 import { Container }       from '@/components/ui/Container';
 import { Button }          from '@/components/ui/Button';
 import { Badge }           from '@/components/ui/Badge';
@@ -120,11 +119,11 @@ export default async function TasarimDetayPage({ params }: PageProps) {
           <div className="flex flex-col gap-6">
             {/* Başlık ve fiyat */}
             <div>
-              <div className="flex flex-wrap gap-2 mb-3">
-                <Badge variant="primary">{EVENT_TYPES[template.category]}</Badge>
-                <Badge variant="neutral">{TEMPLATE_STYLES[template.style]}</Badge>
-                {template.isPopular && <Badge variant="secondary">Popüler</Badge>}
-              </div>
+              {template.isPopular && (
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <Badge variant="secondary">Popüler</Badge>
+                </div>
+              )}
 
               <h1 className="font-display text-3xl md:text-4xl font-bold text-neutral-800 mb-2">
                 {template.name}

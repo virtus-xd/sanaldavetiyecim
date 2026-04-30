@@ -1,27 +1,21 @@
 'use client';
 
 /**
- * Tasarım düzenleme modalı — name, description, category, style, price,
- * is_popular, is_active alanlarını günceller. slug, theme_key, preview
- * görsel salt okunur olarak gösterilir.
+ * Tasarım düzenleme modalı — name, description, price, is_popular, is_active
+ * alanlarını günceller. slug, theme_key, preview görsel salt okunur.
  */
 import { useState }    from 'react';
 import { useRouter }   from 'next/navigation';
 import { Modal }       from '@/components/ui/Modal';
 import { Button }      from '@/components/ui/Button';
 import { Input }       from '@/components/ui/Input';
-import { Select }      from '@/components/ui/Select';
 import { Textarea }    from '@/components/ui/Textarea';
-import { EVENT_TYPE_OPTIONS, TEMPLATE_STYLE_OPTIONS } from '@/lib/constants';
-import type { EventType, TemplateStyle } from '@/types';
 
 interface TemplateRecord {
   id:             string;
   name:           string;
   slug:           string;
   description:    string | null;
-  category:       EventType;
-  style:          TemplateStyle;
   price:          number | string;
   is_active:      boolean;
   is_popular:     boolean;
@@ -40,8 +34,6 @@ export function EditTemplateModal({ template, open, onClose }: EditTemplateModal
 
   const [name,        setName]        = useState(template.name);
   const [description, setDescription] = useState(template.description ?? '');
-  const [category,    setCategory]    = useState<EventType>(template.category);
-  const [style,       setStyle]       = useState<TemplateStyle>(template.style);
   const [price,       setPrice]       = useState<string>(String(template.price));
   const [isActive,    setIsActive]    = useState(template.is_active);
   const [isPopular,   setIsPopular]   = useState(template.is_popular);
@@ -72,8 +64,6 @@ export function EditTemplateModal({ template, open, onClose }: EditTemplateModal
         body:    JSON.stringify({
           name:        name.trim(),
           description: description,
-          category,
-          style,
           price:       priceNum,
           is_active:   isActive,
           is_popular:  isPopular,
@@ -139,21 +129,6 @@ export function EditTemplateModal({ template, open, onClose }: EditTemplateModal
           onChange={(e) => setDescription(e.target.value)}
           rows={3}
         />
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Select
-            label="Kategori"
-            value={category}
-            onChange={(e) => setCategory(e.target.value as EventType)}
-            options={EVENT_TYPE_OPTIONS.map((o) => ({ value: o.value, label: o.label }))}
-          />
-          <Select
-            label="Stil"
-            value={style}
-            onChange={(e) => setStyle(e.target.value as TemplateStyle)}
-            options={TEMPLATE_STYLE_OPTIONS.map((o) => ({ value: o.value, label: o.label }))}
-          />
-        </div>
 
         <Input
           label="Fiyat (TL)"

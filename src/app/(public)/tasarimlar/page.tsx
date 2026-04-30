@@ -1,16 +1,12 @@
-import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { Container }         from '@/components/ui/Container';
 import { SectionTitle }      from '@/components/ui/SectionTitle';
-import { TemplateFilters }   from '@/components/templates/TemplateFilters';
-import { TemplateCard, TemplateCardSkeleton } from '@/components/templates/TemplateCard';
+import { TemplateCard }      from '@/components/templates/TemplateCard';
 import { getTemplates }      from '@/lib/data/templates';
-// Faz 6: Artık Supabase'den veri çekiyor
-import type { TemplateStyle } from '@/types';
 
 export const metadata: Metadata = {
   title:       'Davetiye Tasarımları',
-  description: 'Düğün, nişan, söz ve kına organizasyonları için şık dijital davetiye tasarımlarını inceleyin. Modern, klasik ve romantik seçenekler.',
+  description: 'Düğün, nişan, söz ve kına organizasyonları için şık dijital davetiye tasarımlarını inceleyin.',
   openGraph: {
     title:       'Davetiye Tasarımları — Sanal Davetiyecim',
     description: 'Düğün, nişan, söz ve kına organizasyonları için şık dijital davetiye tasarımları.',
@@ -18,17 +14,8 @@ export const metadata: Metadata = {
   },
 };
 
-interface PageProps {
-  searchParams: Promise<{ stil?: string }>;
-}
-
-export default async function TasarimlarPage({ searchParams }: PageProps) {
-  const params = await searchParams;
-  const style  = params.stil as TemplateStyle | undefined;
-
-  const templates = await getTemplates({
-    style: style || undefined,
-  });
+export default async function TasarimlarPage() {
+  const templates = await getTemplates();
 
   return (
     <div className="min-h-screen bg-neutral-50 pb-20">
@@ -43,13 +30,6 @@ export default async function TasarimlarPage({ searchParams }: PageProps) {
       </div>
 
       <Container className="pt-10">
-        {/* Filtre çubuğu */}
-        <div className="bg-white rounded-2xl border border-neutral-100 p-5 mb-8 shadow-sm">
-          <Suspense fallback={<div className="h-20 animate-pulse bg-neutral-100 rounded-xl" />}>
-            <TemplateFilters />
-          </Suspense>
-        </div>
-
         {/* Sonuç sayısı */}
         <p className="text-sm text-neutral-500 mb-6">
           <span className="font-semibold text-neutral-700">{templates.length}</span> tasarım bulundu
@@ -70,9 +50,6 @@ export default async function TasarimlarPage({ searchParams }: PageProps) {
             <h3 className="font-display font-semibold text-neutral-700 text-lg mb-2">
               Tasarım bulunamadı
             </h3>
-            <p className="text-neutral-500 text-sm">
-              Seçili filtrelere uygun tasarım yok. Filtreleri değiştirmeyi deneyin.
-            </p>
           </div>
         )}
       </Container>
@@ -80,5 +57,4 @@ export default async function TasarimlarPage({ searchParams }: PageProps) {
   );
 }
 
-/** Filtre olmadan tüm sayfayı statik render etme — searchParams dinamik */
 export const dynamic = 'force-dynamic';

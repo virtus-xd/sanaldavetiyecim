@@ -2,16 +2,17 @@ import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 
 interface GlowEnvelopeLandingProps {
-    theme: string;
+    envelopeDesktop: string;
+    envelopeMobile?: string;
     onOpen: () => void;
     onStart?: () => void;
 }
 
 /**
  * Kapalı zarf üstünden kat yerlerinden ışık sızması + beyaza bloom + geçiş
- * Gereken: public/envelope.png
  */
-export default function GlowEnvelopeLanding({ theme, onOpen, onStart }: GlowEnvelopeLandingProps) {
+export default function GlowEnvelopeLanding({ envelopeDesktop, envelopeMobile, onOpen, onStart }: GlowEnvelopeLandingProps) {
+    const mobileBg = envelopeMobile ?? envelopeDesktop;
     const [go, setGo] = useState(false);
 
     // İstersen süreyi burada ayarla
@@ -43,16 +44,19 @@ export default function GlowEnvelopeLanding({ theme, onOpen, onStart }: GlowEnve
             style={{ width: "100vw", height: "100dvh" }}
             onClick={start} // ekrana tıklayınca başlasın
         >
-            {/* Zarf görseli */}
+            {/* Zarf görseli — mobile/desktop için ayrı katmanlar */}
             <div
-                className={`absolute inset-0 bg-cover bg-center bg-no-repeat ${
-                    theme === 'classic'
-                        ? "bg-[url('/invitation-assets/envelopemobil.jpg')] md:bg-[url('/invitation-assets/envelope.png')]"
-                        : ""
-                }`}
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
                 style={{
                     transform: "translateZ(0)",
-                    ...(theme !== 'classic' ? { backgroundImage: `url('/invitation-assets/${theme}-envelope.png')` } : {})
+                    backgroundImage: `url('${mobileBg}')`,
+                }}
+            />
+            <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden md:block"
+                style={{
+                    transform: "translateZ(0)",
+                    backgroundImage: `url('${envelopeDesktop}')`,
                 }}
             />
 

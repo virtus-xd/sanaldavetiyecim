@@ -28,8 +28,6 @@ export default async function AdminTasarimlarPage() {
             <thead>
               <tr className="border-b border-neutral-100 bg-neutral-50">
                 <th className="text-left px-4 py-3 text-xs font-semibold text-neutral-400 uppercase">Tasarım</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-neutral-400 uppercase hidden sm:table-cell">Kategori</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-neutral-400 uppercase hidden md:table-cell">Stil</th>
                 <th className="text-right px-4 py-3 text-xs font-semibold text-neutral-400 uppercase">Fiyat</th>
                 <th className="text-center px-4 py-3 text-xs font-semibold text-neutral-400 uppercase">Aktif</th>
                 <th className="text-center px-4 py-3 text-xs font-semibold text-neutral-400 uppercase">Popüler</th>
@@ -39,7 +37,7 @@ export default async function AdminTasarimlarPage() {
             <tbody className="divide-y divide-neutral-50">
               {(!templates || templates.length === 0) ? (
                 <tr>
-                  <td colSpan={7} className="px-4 py-12 text-center text-sm text-neutral-400">
+                  <td colSpan={5} className="px-4 py-12 text-center text-sm text-neutral-400">
                     Tasarım bulunamadı.
                   </td>
                 </tr>

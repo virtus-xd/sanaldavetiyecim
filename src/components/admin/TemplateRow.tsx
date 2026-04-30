@@ -9,16 +9,12 @@ import { Pencil }   from 'lucide-react';
 import { TemplateToggle }     from './TemplateToggle';
 import { EditTemplateModal }  from './EditTemplateModal';
 import { formatPrice }        from '@/lib/utils';
-import { EVENT_TYPES, TEMPLATE_STYLES } from '@/lib/constants';
-import type { EventType, TemplateStyle } from '@/types';
 
 interface TemplateRecord {
   id:             string;
   name:           string;
   slug:           string;
   description:    string | null;
-  category:       EventType;
-  style:          TemplateStyle;
   price:          number | string;
   is_active:      boolean;
   is_popular:     boolean;
@@ -51,12 +47,6 @@ export function TemplateRow({ template }: TemplateRowProps) {
               <p className="text-xs text-neutral-400">{template.slug}</p>
             </div>
           </div>
-        </td>
-        <td className="px-4 py-3 text-neutral-500 hidden sm:table-cell">
-          {EVENT_TYPES[template.category]}
-        </td>
-        <td className="px-4 py-3 text-neutral-500 hidden md:table-cell">
-          {TEMPLATE_STYLES[template.style]}
         </td>
         <td className="px-4 py-3 text-right font-medium text-neutral-700">
           {formatPrice(Number(template.price))}

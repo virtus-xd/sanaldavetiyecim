@@ -2,7 +2,7 @@
  * Uygulama genelinde kullanılan sabit değerler
  */
 
-import type { EventType, TemplateStyle, OrderStatus, PaymentStatus } from '@/types';
+import type { EventType, OrderStatus, PaymentStatus } from '@/types';
 
 // ─── Navigasyon ───────────────────────────────────────────────────────────────
 
@@ -42,21 +42,6 @@ export const EVENT_TYPES: Record<EventType, string> = {
 
 export const EVENT_TYPE_OPTIONS = Object.entries(EVENT_TYPES).map(
   ([value, label]) => ({ value: value as EventType, label })
-);
-
-// ─── Tasarım Stilleri ─────────────────────────────────────────────────────────
-
-export const TEMPLATE_STYLES: Record<TemplateStyle, string> = {
-  modern:     'Modern',
-  klasik:     'Klasik',
-  minimal:    'Minimal',
-  romantik:   'Romantik',
-  luks:       'Lüks',
-  eglenceli:  'Eğlenceli',
-};
-
-export const TEMPLATE_STYLE_OPTIONS = Object.entries(TEMPLATE_STYLES).map(
-  ([value, label]) => ({ value: value as TemplateStyle, label })
 );
 
 // ─── Sipariş Durumları ────────────────────────────────────────────────────────

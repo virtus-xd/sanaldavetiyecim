@@ -7,8 +7,6 @@ import { useFormContext } from 'react-hook-form';
 import { cn } from '@/lib/utils';
 import { useTemplates } from '@/hooks/useTemplates';
 import { Textarea }     from '@/components/ui/Textarea';
-import { Badge }        from '@/components/ui/Badge';
-import { EVENT_TYPES }  from '@/lib/constants';
 import type { OrderFormValues } from '@/lib/validations';
 import { Check } from 'lucide-react';
 
@@ -60,9 +58,6 @@ export function Step2Design() {
               />
               <div className="p-2">
                 <p className="text-xs font-semibold text-neutral-800 truncate">{t.name}</p>
-                <Badge variant="primary" className="mt-1 text-[10px] px-1.5 py-0">
-                  {EVENT_TYPES[t.category]}
-                </Badge>
               </div>
               {selectedId === t.id && (
                 <div className="absolute top-1.5 right-1.5 w-5 h-5 rounded-full bg-primary flex items-center justify-center">

@@ -4,27 +4,22 @@
 import { createAdminClient } from '@/lib/supabase/server';
 import { EVENT_TYPES } from '@/lib/constants';
 import type { EventType } from '@/types';
-import type { InvitationData, ThemeKey } from '@/components/invitation-themes/types';
-
-/** Template slug → tema anahtarı eşleştirmesi */
-const SLUG_TO_THEME: Record<string, ThemeKey> = {
-  'zarif-altin':       'classic',
-  'modern-minimal':    'modern',
-  'romantik-gul':      'floral',
-  'klasik-lacivert':   'starry',
-  'bahar-cicekleri':   'vintage',
-  'kina-gecesi':       'autumn',
-  'boho-doga':         'rustic',
-  'siyah-beyaz':       'gatsby',
-};
+import type { InvitationData } from '@/components/invitation-themes/types';
+import {
+  DEFAULT_THEME,
+  SLUG_TO_THEME,
+  THEME_REGISTRY,
+  type ThemeKey,
+} from '@/components/invitation-themes/themes.config';
 
 /** theme_key DB alanı varsa doğrudan kullan, yoksa slug'dan eşle */
 function resolveTheme(row: Record<string, unknown>): ThemeKey {
-  if (row.theme_key && typeof row.theme_key === 'string') {
-    return row.theme_key as ThemeKey;
+  const themeKey = row.theme_key;
+  if (typeof themeKey === 'string' && themeKey in THEME_REGISTRY) {
+    return themeKey as ThemeKey;
   }
   const slug = (row.slug as string) ?? '';
-  return SLUG_TO_THEME[slug] ?? 'classic';
+  return SLUG_TO_THEME[slug] ?? DEFAULT_THEME;
 }
 
 export interface InvitationPageData {
@@ -118,7 +113,7 @@ export async function getInvitationByOrderNumber(orderNumber: string): Promise<I
   };
 
   const templateData = order.templates as Record<string, unknown> | null;
-  const theme = templateData ? resolveTheme(templateData) : 'classic';
+  const theme = templateData ? resolveTheme(templateData) : DEFAULT_THEME;
 
   return { invitationData, theme };
 }

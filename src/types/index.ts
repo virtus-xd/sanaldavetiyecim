@@ -6,16 +6,6 @@
 
 export type EventType = 'dugun' | 'soz' | 'nisan' | 'kina' | 'ozel';
 
-export type TemplateCategory = EventType;
-
-export type TemplateStyle =
-  | 'modern'
-  | 'klasik'
-  | 'minimal'
-  | 'romantik'
-  | 'luks'
-  | 'eglenceli';
-
 export type OrderStatus =
   | 'beklemede'
   | 'hazirlaniyor'
@@ -31,8 +21,6 @@ export interface Template {
   id: string;
   name: string;
   slug: string;
-  category: TemplateCategory;
-  style: TemplateStyle;
   previewImages: string[];
   description: string;
   price: number;
