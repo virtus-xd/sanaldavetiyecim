@@ -1,8 +1,9 @@
 import { notFound }       from 'next/navigation';
 import Link                from 'next/link';
 import type { Metadata }   from 'next';
-import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle2, Eye } from 'lucide-react';
 import { getTemplateBySlug, getRelatedTemplates, getTemplates } from '@/lib/data/templates';
+import { SLUG_TO_THEME } from '@/components/invitation-themes/themes.config';
 import { formatPrice }     from '@/lib/utils';
 import { Container }       from '@/components/ui/Container';
 import { Button }          from '@/components/ui/Button';
@@ -74,6 +75,7 @@ export default async function TasarimDetayPage({ params }: PageProps) {
 
   if (!template) notFound();
 
+  const hasPreview = slug in SLUG_TO_THEME;
   const related = await getRelatedTemplates(template);
 
   const jsonLd = {
@@ -151,16 +153,31 @@ export default async function TasarimDetayPage({ params }: PageProps) {
             </div>
 
             {/* CTA Butonları */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button asChild size="lg" className="flex-1">
-                <Link href={`/siparis?tasarim=${template.id}`} className="flex items-center justify-center gap-2">
-                  Bu Tasarımı Sipariş Et
-                  <ArrowRight size={18} aria-hidden="true" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="/iletisim">Bilgi Al</Link>
-              </Button>
+            <div className="flex flex-col gap-3">
+              {hasPreview && (
+                <Button asChild size="lg" variant="outline" className="w-full">
+                  <Link
+                    href={`/onizleme/${template.slug}`}
+                    target="_blank"
+                    rel="noopener"
+                    className="flex items-center justify-center gap-2"
+                  >
+                    <Eye size={18} aria-hidden="true" />
+                    Canlı Önizleme
+                  </Link>
+                </Button>
+              )}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button asChild size="lg" className="flex-1">
+                  <Link href={`/siparis?tasarim=${template.id}`} className="flex items-center justify-center gap-2">
+                    Bu Tasarımı Sipariş Et
+                    <ArrowRight size={18} aria-hidden="true" />
+                  </Link>
+                </Button>
+                <Button asChild variant="ghost" size="lg">
+                  <Link href="/iletisim">Bilgi Al</Link>
+                </Button>
+              </div>
             </div>
 
             <p className="text-xs text-neutral-400 text-center sm:text-left">
