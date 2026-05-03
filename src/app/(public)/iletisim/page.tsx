@@ -18,7 +18,7 @@ const contactItems = [
   {
     icon:  Phone,
     label: 'Telefon',
-    value: '+90 555 123 45 67',
+    value: SITE_META.phoneDisplay,
     href:  `tel:+${SITE_META.whatsapp}`,
   },
   {

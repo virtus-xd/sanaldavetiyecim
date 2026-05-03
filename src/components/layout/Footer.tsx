@@ -87,7 +87,7 @@ export function Footer() {
                   className="flex items-center gap-2 text-sm text-[#555555] hover:text-black transition-colors"
                 >
                   <Phone size={14} className="shrink-0" />
-                  +90 555 123 45 67
+                  {SITE_META.phoneDisplay}
                 </a>
               </li>
               <li>

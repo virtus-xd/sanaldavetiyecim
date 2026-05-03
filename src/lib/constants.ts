@@ -23,9 +23,10 @@ export const SITE_META = {
   title:       'Sanal Davetiyecim — Dijital Davetiye Tasarımı',
   description:
     'Düğün, nişan, söz ve kına organizasyonlarınız için şık dijital davetiye siteleri hazırlıyoruz. Tek link ile tüm misafirlerinize ulaşın.',
-  whatsapp:    '905551234567',
-  email:       'info@sanaldavetiyecim.com',
-  instagram:   'sanaldavetiyecim',
+  whatsapp:     '905457710678',
+  phoneDisplay: '+90 545 771 06 78',
+  email:        'info@sanaldavetiyecim.com',
+  instagram:    'sanal.davetiyecim',
 } as const;
 
 export const WHATSAPP_URL = `https://wa.me/${SITE_META.whatsapp}?text=Merhaba%2C%20davetiye%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.`;

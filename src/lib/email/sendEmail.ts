@@ -1,8 +1,9 @@
-import { getResend, FROM_ADDRESS, ADMIN_EMAIL } from './resend';
+import { getResend, FROM_ADDRESS, ADMIN_EMAIL, CONTACT_EMAIL } from './resend';
 import { orderConfirmationHtml, orderConfirmationText } from './templates/orderConfirmation';
 import { adminNewOrderHtml, adminNewOrderText }         from './templates/adminNewOrder';
 import { orderDeliveredHtml, orderDeliveredText }       from './templates/orderDelivered';
 import { paymentConfirmedHtml, paymentConfirmedText }   from './templates/paymentConfirmed';
+import { adminNewContactHtml, adminNewContactText }     from './templates/adminNewContact';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://sanaldavetiyecim.com';
 
@@ -61,6 +62,24 @@ export async function sendPaymentConfirmed(params: {
     subject: `Ödemeniz Onaylandı — ${params.orderNumber}`,
     html:    paymentConfirmedHtml(data),
     text:    paymentConfirmedText(data),
+  });
+}
+
+/* ─── Yeni iletişim mesajı bildirimi — admine ─── */
+export async function sendAdminNewContact(message: {
+  name:    string;
+  email:   string;
+  phone?:  string | null;
+  message: string;
+}) {
+  const data = { ...message, siteUrl: SITE_URL };
+  return getResend().emails.send({
+    from:     FROM_ADDRESS,
+    to:       CONTACT_EMAIL,
+    replyTo:  message.email,
+    subject:  `✉️ Yeni İletişim Mesajı — ${message.name}`,
+    html:     adminNewContactHtml(data),
+    text:     adminNewContactText(data),
   });
 }
 
