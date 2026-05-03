@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { formatPrice } from '@/lib/utils';
+import { PriceTag } from '@/components/ui/PriceTag';
 import type { Template } from '@/types';
 import { Container } from '@/components/ui/Container';
 
@@ -56,9 +56,7 @@ export function PopularTemplates({ templates }: PopularTemplatesProps) {
                   <h3 className="text-sm font-semibold text-black leading-tight group-hover:text-primary transition-colors">
                     {template.name}
                   </h3>
-                  <span className="text-sm font-bold text-black shrink-0">
-                    {formatPrice(template.price)}
-                  </span>
+                  <PriceTag price={template.price} variant="card" className="text-sm" />
                 </div>
               </div>
             </Link>

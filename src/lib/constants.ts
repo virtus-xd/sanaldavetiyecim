@@ -31,6 +31,21 @@ export const SITE_META = {
 
 export const WHATSAPP_URL = `https://wa.me/${SITE_META.whatsapp}?text=Merhaba%2C%20davetiye%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.`;
 
+// ─── Açılışa Özel Kampanya ────────────────────────────────────────────────────
+// Devre dışı bırakmak için enabled: false yap
+export const CAMPAIGN = {
+  enabled:       true,
+  originalPrice: 1699,
+  label:         'Açılışa Özel',
+  shortNote:     'Sınırlı süreli açılış indirimi',
+} as const;
+
+/** Yüzdesel indirim oranı (price < originalPrice ise) */
+export function campaignDiscountPercent(price: number): number {
+  if (!CAMPAIGN.enabled || CAMPAIGN.originalPrice <= price) return 0;
+  return Math.round(((CAMPAIGN.originalPrice - price) / CAMPAIGN.originalPrice) * 100);
+}
+
 // ─── Etkinlik Türleri ─────────────────────────────────────────────────────────
 
 export const EVENT_TYPES: Record<EventType, string> = {

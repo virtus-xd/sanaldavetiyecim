@@ -2,8 +2,8 @@
  * Sipariş formu — Adım 4: Özet ve onay.
  */
 import { useFormContext } from 'react-hook-form';
-import { formatDate }    from '@/lib/utils';
-import { EVENT_TYPES, BANK_ACCOUNTS } from '@/lib/constants';
+import { formatDate, formatPrice } from '@/lib/utils';
+import { EVENT_TYPES, BANK_ACCOUNTS, CAMPAIGN } from '@/lib/constants';
 import { useTemplates } from '@/hooks/useTemplates';
 import type { OrderFormValues } from '@/lib/validations';
 
@@ -77,11 +77,24 @@ export function Step4Summary() {
       </div>
 
       {/* Fiyat */}
-      <div className="bg-primary/5 border border-primary/20 rounded-xl p-4 flex items-center justify-between">
-        <span className="font-semibold text-neutral-700">Toplam Tutar</span>
-        <span className="font-display text-2xl font-bold text-primary">
-          ₺{price.toLocaleString('tr-TR')}
-        </span>
+      <div className="bg-primary/5 border border-primary/20 rounded-xl p-4">
+        {CAMPAIGN.enabled && CAMPAIGN.originalPrice > price && (
+          <div className="flex items-center justify-between text-sm mb-2">
+            <span className="text-neutral-500">Liste fiyatı</span>
+            <span className="text-neutral-400 line-through">{formatPrice(CAMPAIGN.originalPrice)}</span>
+          </div>
+        )}
+        <div className="flex items-center justify-between">
+          <span className="font-semibold text-neutral-700">Toplam Tutar</span>
+          <span className="font-display text-2xl font-bold text-primary">
+            ₺{price.toLocaleString('tr-TR')}
+          </span>
+        </div>
+        {CAMPAIGN.enabled && CAMPAIGN.originalPrice > price && (
+          <p className="mt-2 text-xs text-primary font-medium">
+            {CAMPAIGN.label} — {formatPrice(CAMPAIGN.originalPrice - price)} tasarruf
+          </p>
+        )}
       </div>
 
       {/* Ödeme Talimatları */}

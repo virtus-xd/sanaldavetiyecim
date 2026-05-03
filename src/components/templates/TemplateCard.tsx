@@ -3,7 +3,7 @@
  */
 import Link from 'next/link';
 import { Eye, ArrowRight } from 'lucide-react';
-import { formatPrice } from '@/lib/utils';
+import { PriceTag } from '@/components/ui/PriceTag';
 import type { Template } from '@/types';
 
 interface TemplateCardProps {
@@ -57,9 +57,7 @@ export function TemplateCard({ template }: TemplateCardProps) {
           <h3 className="font-display font-semibold text-neutral-800 leading-snug">
             {template.name}
           </h3>
-          <span className="font-bold text-primary shrink-0">
-            {formatPrice(template.price)}
-          </span>
+          <PriceTag price={template.price} variant="card" />
         </div>
 
         <p className="text-neutral-500 text-sm leading-relaxed line-clamp-2">

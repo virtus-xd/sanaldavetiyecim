@@ -4,10 +4,10 @@ import type { Metadata }   from 'next';
 import { ArrowLeft, ArrowRight, CheckCircle2, Eye } from 'lucide-react';
 import { getTemplateBySlug, getRelatedTemplates, getTemplates } from '@/lib/data/templates';
 import { hasPreview as hasPreviewSlug } from '@/components/invitation-themes/theme-slugs';
-import { formatPrice }     from '@/lib/utils';
 import { Container }       from '@/components/ui/Container';
 import { Button }          from '@/components/ui/Button';
 import { Badge }           from '@/components/ui/Badge';
+import { PriceTag }        from '@/components/ui/PriceTag';
 import { SectionTitle }    from '@/components/ui/SectionTitle';
 import { ImageGallery }    from '@/components/templates/ImageGallery';
 import { TemplateCard }    from '@/components/templates/TemplateCard';
@@ -131,9 +131,7 @@ export default async function TasarimDetayPage({ params }: PageProps) {
                 {template.name}
               </h1>
 
-              <p className="font-display text-3xl font-bold text-primary">
-                {formatPrice(template.price)}
-              </p>
+              <PriceTag price={template.price} variant="detail" />
             </div>
 
             {/* Açıklama */}
