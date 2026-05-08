@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Inter, Playfair_Display, Pinyon_Script } from 'next/font/google';
 import { SITE_META } from '@/lib/constants';
 import './globals.css';
 
@@ -14,6 +14,13 @@ const playfair = Playfair_Display({
   subsets:  ['latin'],
   display:  'swap',
   weight:   ['400', '500', '600', '700'],
+});
+
+const pinyonScript = Pinyon_Script({
+  variable: '--font-pinyon-script',
+  subsets:  ['latin'],
+  display:  'swap',
+  weight:   '400',
 });
 
 export const metadata: Metadata = {
@@ -81,7 +88,7 @@ export default function RootLayout({
   return (
     <html
       lang="tr"
-      className={`${inter.variable} ${playfair.variable} h-full`}
+      className={`${inter.variable} ${playfair.variable} ${pinyonScript.variable} h-full`}
     >
       <body className="min-h-full flex flex-col antialiased">
         {children}

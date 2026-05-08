@@ -18,6 +18,10 @@ export const PREVIEW_SLUGS = [
   'siyah-beyaz',
   'okyanus',
   'zerafet',
+  'altin-zarafet',
+  'sage-bahce',
+  'boho-krem',
+  'bahar-cicegi',
 ] as const;
 
 export type PreviewSlug = (typeof PREVIEW_SLUGS)[number];

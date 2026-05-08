@@ -56,7 +56,7 @@
 
   /* Davetiye fontları */
   --font-serif: "Playfair Display", serif;
-  --font-handwriting: "Pinyon Script", cursive;
+  --font-handwriting: var(--font-pinyon-script), "Pinyon Script", cursive;
 
   /* Davetiye animasyonları */
   --animate-fade-in: fade-in 1s ease-out;

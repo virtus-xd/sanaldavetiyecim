@@ -34,6 +34,8 @@ export interface InvitationData {
   venue: InvitationVenue;
   events: InvitationEvent[];
   footer: InvitationFooter;
+  /** Opsiyonel galeri görselleri — tema desteklerse render edilir */
+  gallery?: string[];
 }
 
 export type { ThemeKey } from './themes.config';

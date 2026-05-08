@@ -12,6 +12,7 @@
 import ClassicHero from './classic/HeroSection';
 import ClassicEventDetails from './classic/EventDetailsSection';
 import ClassicFooter from './classic/Footer';
+import ClassicGallery from './classic/GallerySection';
 
 import FloralHero from './floral/HeroSection';
 import FloralEventDetails from './floral/EventDetailsSection';
@@ -32,6 +33,7 @@ import OceanFooter from './ocean/Footer';
 import StarryHero from './starry/HeroSection';
 import StarryEventDetails from './starry/EventDetailsSection';
 import StarryFooter from './starry/Footer';
+import StarryGallery from './starry/GallerySection';
 
 import AutumnHero from './autumn/HeroSection';
 import AutumnEventDetails from './autumn/EventDetailsSection';
@@ -48,6 +50,27 @@ import VintageFooter from './vintage/Footer';
 import FlowersPinkHero from './flowers-pink/HeroSection';
 import FlowersPinkEventDetails from './flowers-pink/EventDetailsSection';
 import FlowersPinkFooter from './flowers-pink/Footer';
+import FlowersPinkGallery from './flowers-pink/GallerySection';
+
+import ElegantHero from './elegant/HeroSection';
+import ElegantEventDetails from './elegant/EventDetailsSection';
+import ElegantFooter from './elegant/Footer';
+import ElegantGallery from './elegant/GallerySection';
+
+import SageHero from './sage/HeroSection';
+import SageEventDetails from './sage/EventDetailsSection';
+import SageFooter from './sage/Footer';
+import SageGallery from './sage/GallerySection';
+
+import BohoHero from './boho/HeroSection';
+import BohoEventDetails from './boho/EventDetailsSection';
+import BohoFooter from './boho/Footer';
+import BohoGallery from './boho/GallerySection';
+
+import BlossomHero from './blossom/HeroSection';
+import BlossomEventDetails from './blossom/EventDetailsSection';
+import BlossomFooter from './blossom/Footer';
+import BlossomGallery from './blossom/GallerySection';
 
 export interface ThemeDefinition {
   /** Kullanıcıya gösterilecek tema adı */
@@ -63,6 +86,8 @@ export interface ThemeDefinition {
   Hero: React.FC;
   EventDetails: React.FC;
   Footer: React.FC;
+  /** Opsiyonel galeri bölümü — tanımlıysa Hero ile EventDetails arasında render edilir */
+  Gallery?: React.FC;
 }
 
 export const THEME_REGISTRY = {
@@ -74,6 +99,7 @@ export const THEME_REGISTRY = {
       mobile: '/themes/classic/envelope-mobile.jpg',
     },
     Hero: ClassicHero,
+    Gallery: ClassicGallery,
     EventDetails: ClassicEventDetails,
     Footer: ClassicFooter,
   },
@@ -98,6 +124,7 @@ export const THEME_REGISTRY = {
     slug: 'klasik-lacivert',
     envelope: { desktop: '/themes/starry/envelope.png' },
     Hero: StarryHero,
+    Gallery: StarryGallery,
     EventDetails: StarryEventDetails,
     Footer: StarryFooter,
   },
@@ -149,8 +176,57 @@ export const THEME_REGISTRY = {
       mobile: '/themes/flowers-pink/envelope-mobile.png',
     },
     Hero: FlowersPinkHero,
+    Gallery: FlowersPinkGallery,
     EventDetails: FlowersPinkEventDetails,
     Footer: FlowersPinkFooter,
+  },
+  elegant: {
+    label: 'Altın Zarafet',
+    slug: 'altin-zarafet',
+    envelope: {
+      desktop: '/themes/elegant/envelope.png',
+      mobile: '/themes/elegant/envelope-mobile.png',
+    },
+    Hero: ElegantHero,
+    Gallery: ElegantGallery,
+    EventDetails: ElegantEventDetails,
+    Footer: ElegantFooter,
+  },
+  sage: {
+    label: 'Sage Bahçe',
+    slug: 'sage-bahce',
+    envelope: {
+      desktop: '/themes/sage/envelope.png',
+      mobile: '/themes/sage/envelope-mobile.png',
+    },
+    Hero: SageHero,
+    Gallery: SageGallery,
+    EventDetails: SageEventDetails,
+    Footer: SageFooter,
+  },
+  boho: {
+    label: 'Boho Krem',
+    slug: 'boho-krem',
+    envelope: {
+      desktop: '/themes/boho/envelope.png',
+      mobile: '/themes/boho/envelope-mobile.png',
+    },
+    Hero: BohoHero,
+    Gallery: BohoGallery,
+    EventDetails: BohoEventDetails,
+    Footer: BohoFooter,
+  },
+  blossom: {
+    label: 'Bahar Çiçeği',
+    slug: 'bahar-cicegi',
+    envelope: {
+      desktop: '/themes/blossom/envelope.png',
+      mobile: '/themes/blossom/envelope-mobile.png',
+    },
+    Hero: BlossomHero,
+    Gallery: BlossomGallery,
+    EventDetails: BlossomEventDetails,
+    Footer: BlossomFooter,
   },
 } as const satisfies Record<string, ThemeDefinition>;
 

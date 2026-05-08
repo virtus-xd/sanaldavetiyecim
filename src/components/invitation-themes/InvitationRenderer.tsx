@@ -16,7 +16,8 @@ export default function InvitationRenderer({ data, theme }: InvitationRendererPr
   const [isOpen, setIsOpen] = useState(false);
   const [musicStarted, setMusicStarted] = useState(false);
 
-  const { Hero, EventDetails, Footer, envelope } = getTheme(theme);
+  const { Hero, Gallery, EventDetails, Footer, envelope } = getTheme(theme);
+  const showGallery = Boolean(Gallery && (data.gallery?.length ?? 0) > 0);
 
   if (!isOpen) {
     return (
@@ -34,6 +35,7 @@ export default function InvitationRenderer({ data, theme }: InvitationRendererPr
       <MusicPlayer src="/themes/_shared/music.mp3" startPlaying={musicStarted} />
       <div className="fade-in">
         <Hero />
+        {showGallery && Gallery ? <Gallery /> : null}
         <EventDetails />
         <Footer />
       </div>

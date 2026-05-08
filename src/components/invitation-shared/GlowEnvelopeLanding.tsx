@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -40,20 +42,35 @@ export default function GlowEnvelopeLanding({ envelopeDesktop, envelopeMobile, o
 
     return (
         <div
-            className="fixed inset-0 z-50 overflow-hidden bg-black"
-            style={{ width: "100vw", height: "100dvh" }}
-            onClick={start} // ekrana tıklayınca başlasın
+            role="button"
+            tabIndex={0}
+            aria-label="Davetiyeyi aç"
+            className="fixed inset-0 z-50 overflow-hidden bg-black cursor-pointer select-none"
+            style={{
+                width: "100vw",
+                height: "100dvh",
+                touchAction: "manipulation",
+                WebkitTapHighlightColor: "transparent",
+            }}
+            onClick={start}
+            onPointerUp={start}
+            onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    start();
+                }
+            }}
         >
             {/* Zarf görseli — mobile/desktop için ayrı katmanlar */}
             <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden pointer-events-none"
                 style={{
                     transform: "translateZ(0)",
                     backgroundImage: `url('${mobileBg}')`,
                 }}
             />
             <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden md:block"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden md:block pointer-events-none"
                 style={{
                     transform: "translateZ(0)",
                     backgroundImage: `url('${envelopeDesktop}')`,

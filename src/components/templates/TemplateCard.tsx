@@ -2,7 +2,7 @@
  * Galeri şablon kartı bileşeni.
  */
 import Link from 'next/link';
-import { Eye, ArrowRight } from 'lucide-react';
+import { Eye } from 'lucide-react';
 import { PriceTag } from '@/components/ui/PriceTag';
 import type { Template } from '@/types';
 
@@ -12,59 +12,55 @@ interface TemplateCardProps {
 
 export function TemplateCard({ template }: TemplateCardProps) {
   return (
-    <article className="group bg-white rounded-2xl overflow-hidden border border-neutral-100 hover:border-primary/20 hover:shadow-lg transition-all duration-300">
-      {/* Görsel */}
-      <div className="relative h-56 overflow-hidden bg-neutral-100">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={template.previewImages[0]}
-          alt={`${template.name} davetiye tasarımı önizlemesi`}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-        />
+    <Link
+      href={`/onizleme/${template.slug}`}
+      aria-label={`${template.name} canlı önizlemesini aç`}
+      className="group block bg-white rounded-2xl overflow-hidden border border-neutral-100 hover:border-primary/20 hover:shadow-lg transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+    >
+      <article>
+        {/* Görsel */}
+        <div className="relative h-56 overflow-hidden bg-neutral-100">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={template.previewImages[0]}
+            alt={`${template.name} davetiye tasarımı önizlemesi`}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
 
-        {/* Popüler rozeti */}
-        {template.isPopular && (
-          <div className="absolute top-3 left-3">
-            <span className="px-2.5 py-1 bg-primary text-white text-xs font-semibold rounded-full shadow-sm">
-              Popüler
+          {/* Popüler rozeti */}
+          {template.isPopular && (
+            <div className="absolute top-3 left-3">
+              <span className="px-2.5 py-1 bg-primary text-white text-xs font-semibold rounded-full shadow-sm">
+                Popüler
+              </span>
+            </div>
+          )}
+
+          {/* Hover overlay — kart tıklanabilir, hover'da CTA göstergesi */}
+          <div className="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="flex items-center gap-2 px-5 py-2.5 bg-white text-neutral-800 rounded-full text-sm font-semibold shadow-lg">
+              <Eye size={16} aria-hidden="true" />
+              Canlı Önizleme
             </span>
           </div>
-        )}
-
-        {/* Hover overlay */}
-        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-          <Link
-            href={`/tasarimlar/${template.slug}`}
-            className="flex items-center gap-1.5 px-4 py-2 bg-white text-neutral-800 rounded-lg text-sm font-medium hover:bg-primary hover:text-white transition-colors"
-          >
-            <Eye size={14} aria-hidden="true" />
-            İncele
-          </Link>
-          <Link
-            href={`/siparis?tasarim=${template.id}`}
-            className="flex items-center gap-1.5 px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary-dark transition-colors"
-          >
-            <ArrowRight size={14} aria-hidden="true" />
-            Sipariş Ver
-          </Link>
-        </div>
-      </div>
-
-      {/* İçerik */}
-      <div className="p-5">
-        <div className="flex items-start justify-between gap-2 mb-2">
-          <h3 className="font-display font-semibold text-neutral-800 leading-snug">
-            {template.name}
-          </h3>
-          <PriceTag price={template.price} variant="card" />
         </div>
 
-        <p className="text-neutral-500 text-sm leading-relaxed line-clamp-2">
-          {template.description}
-        </p>
-      </div>
-    </article>
+        {/* İçerik */}
+        <div className="p-5">
+          <div className="flex items-start justify-between gap-2 mb-2">
+            <h3 className="font-display font-semibold text-neutral-800 leading-snug group-hover:text-primary transition-colors">
+              {template.name}
+            </h3>
+            <PriceTag price={template.price} variant="card" />
+          </div>
+
+          <p className="text-neutral-500 text-sm leading-relaxed line-clamp-2">
+            {template.description}
+          </p>
+        </div>
+      </article>
+    </Link>
   );
 }
 

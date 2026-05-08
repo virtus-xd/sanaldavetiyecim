@@ -55,4 +55,13 @@ export const sampleInvitation: InvitationData = {
     emailUrl:      'mailto:info@sanaldavetiyecim.com',
     credits:       'Sanal Davetiyecim ile hazırlandı',
   },
+
+  gallery: [
+    '/themes/elegant/gallery-1.jpg',
+    '/themes/elegant/gallery-2.jpg',
+    '/themes/elegant/gallery-3.jpg',
+    '/themes/elegant/gallery-4.jpg',
+    '/themes/elegant/gallery-5.jpg',
+    '/themes/elegant/gallery-6.jpg',
+  ],
 };
