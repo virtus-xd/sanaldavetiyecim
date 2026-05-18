@@ -41,7 +41,7 @@ export default function HeroSection() {
             
             {/* Rustic Background Image */}
             <div
-                className="absolute inset-0 bg-[url('/themes/rustic/bg.png')] bg-cover bg-center bg-no-repeat opacity-60 pointer-events-none"
+                className="absolute inset-0 bg-[url('/themes/rustic/bg.webp')] bg-cover bg-center bg-no-repeat opacity-60 pointer-events-none"
             />
             {/* Warm overlay */}
             <div className="absolute inset-0 bg-[#E8DCCB]/30 pointer-events-none mix-blend-multiply" />

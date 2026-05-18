@@ -8,7 +8,7 @@ INSERT INTO templates (name, slug, preview_images, description, price, is_popula
 VALUES (
   'Altın Zarafet',
   'altin-zarafet',
-  ARRAY['/themes/elegant/envelope.png', '/themes/elegant/bg-desktop.png'],
+  ARRAY['/themes/elegant/envelope.webp', '/themes/elegant/bg-desktop.webp'],
   'Krem ve altın tonlarında, çiçek motifli divider geçişleri ve el yazısı tipografi ile zarif bir davetiye tasarımı.',
   279.00,
   true,

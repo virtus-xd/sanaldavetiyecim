@@ -31,7 +31,7 @@ export default function GallerySection() {
       ref={sectionRef}
       className="py-24 px-4 bg-[#fdfaf9] text-[#3a3f38] relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-[url('/themes/flowers-pink/bg.png')] bg-cover bg-center opacity-15 pointer-events-none mix-blend-multiply" />
+      <div className="absolute inset-0 bg-[url('/themes/flowers-pink/bg.webp')] bg-cover bg-center opacity-15 pointer-events-none mix-blend-multiply" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>

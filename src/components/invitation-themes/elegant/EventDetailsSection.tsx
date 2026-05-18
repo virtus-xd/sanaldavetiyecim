@@ -31,7 +31,7 @@ export default function EventDetailsSection() {
 
   return (
     <>
-      <FloralDivider imageName="divider-2.png" height={140} />
+      <FloralDivider imageName="divider-2.webp" height={140} />
       <section ref={sectionRef} className="py-20 md:py-28 px-4 bg-[#faf8f5] text-[#3d3229] relative overflow-hidden">
         <div className="max-w-6xl mx-auto relative z-10">
 
@@ -157,7 +157,7 @@ export default function EventDetailsSection() {
                   />
                 </div>
               ) : (
-                <div className="md:col-span-3 min-h-[260px] md:min-h-0 flex items-center justify-center bg-[url('/themes/elegant/bg-desktop.png')] bg-cover bg-center opacity-90" />
+                <div className="md:col-span-3 min-h-[260px] md:min-h-0 flex items-center justify-center bg-[url('/themes/elegant/bg-desktop.webp')] bg-cover bg-center opacity-90" />
               )}
             </div>
           </div>

@@ -29,7 +29,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#eaf0e8] text-[#333]">
-      <div className="absolute inset-0 bg-[url('/themes/blossom/hero-bg.png')] bg-cover bg-center bg-no-repeat opacity-90 pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('/themes/blossom/hero-bg.webp')] bg-cover bg-center bg-no-repeat opacity-90 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#eaf0e8]/80 via-transparent to-[#eaf0e8]/30 pointer-events-none" />
 
       <div className="relative z-10 text-center px-6 animate-fade-in space-y-8 bg-white/70 backdrop-blur-md p-10 md:p-16 rounded-[2rem] border border-white/50 shadow-2xl max-w-4xl w-[90%] md:w-auto mt-16 md:mt-0">

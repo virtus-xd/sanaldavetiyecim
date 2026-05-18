@@ -40,7 +40,7 @@ export default function HeroSection() {
         <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#F4F1E1] text-[#5D534A]">
             {/* Vintage Paper Background */}
             <div
-                className="absolute inset-0 bg-[url('/themes/vintage/bg.png')] bg-cover bg-center bg-no-repeat opacity-40 pointer-events-none mix-blend-multiply flex items-center justify-center"
+                className="absolute inset-0 bg-[url('/themes/vintage/bg.webp')] bg-cover bg-center bg-no-repeat opacity-40 pointer-events-none mix-blend-multiply flex items-center justify-center"
             >
             </div>
             {/* Subtle vintage vignette overlay */}

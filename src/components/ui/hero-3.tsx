@@ -48,7 +48,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: 'url(/images/hero-theme-bg.png)',
+          backgroundImage: 'url(/images/hero-theme-bg.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center top',
           backgroundRepeat: 'no-repeat',
@@ -75,7 +75,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/sanaldavetiyecim-logo.png"
+            src="/images/sanaldavetiyecim-logo.webp"
             alt="Sanal Davetiyecim"
             className="h-32 w-32 sm:h-40 sm:w-40 md:h-44 md:w-44 object-contain"
             loading="eager"

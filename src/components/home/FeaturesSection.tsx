@@ -109,7 +109,7 @@ function SealIllustration() {
     <div aria-hidden className="flex h-full w-full items-center justify-center">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/seal-nobg.png"
+        src="/images/seal-nobg.webp"
         alt=""
         className="h-full max-h-44 w-auto object-contain drop-shadow-md"
         loading="lazy"

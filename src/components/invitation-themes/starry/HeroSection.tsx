@@ -40,7 +40,7 @@ export default function HeroSection() {
         <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-slate-950 text-slate-100">
             {/* Starry Sky Background */}
             <div
-                className="absolute inset-0 bg-[url('/themes/starry/bg.png')] bg-cover bg-center bg-no-repeat opacity-60 pointer-events-none mix-blend-screen"
+                className="absolute inset-0 bg-[url('/themes/starry/bg.webp')] bg-cover bg-center bg-no-repeat opacity-60 pointer-events-none mix-blend-screen"
             />
             {/* Soft gradient overlay for dark atmosphere */}
             <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-slate-950/80 pointer-events-none" />

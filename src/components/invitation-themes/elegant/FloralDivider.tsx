@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 interface FloralDividerProps {
-  /** public/themes/elegant/ altındaki görsel adı, örn: "divider-1.png" */
+  /** public/themes/elegant/ altındaki görsel adı, örn: "divider-1.webp" */
   imageName?: string;
   /** Opsiyonel yükseklik (px). Varsayılan: 120 */
   height?: number;
@@ -12,7 +12,7 @@ interface FloralDividerProps {
 }
 
 export default function FloralDivider({
-  imageName = 'divider-1.png',
+  imageName = 'divider-1.webp',
   height = 120,
   bgColor = '#faf8f5',
 }: FloralDividerProps) {

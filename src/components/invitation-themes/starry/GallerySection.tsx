@@ -30,7 +30,7 @@ export default function GallerySection() {
       ref={sectionRef}
       className="py-24 px-4 bg-slate-950 text-slate-100 relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-[url('/themes/starry/bg.png')] bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none mix-blend-screen" />
+      <div className="absolute inset-0 bg-[url('/themes/starry/bg.webp')] bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none mix-blend-screen" />
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-transparent to-slate-950/90 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">

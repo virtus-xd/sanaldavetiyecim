@@ -69,22 +69,22 @@ src/
 public/
 ├── favicon.ico
 ├── images/                    # Genel site görselleri
-│   └── site-tasarimlar.png
+│   └── site-tasarimlar.webp
 └── themes/                    # 🎨 Tüm tema görselleri (asset + preview, temaya göre gruplu)
     ├── _shared/               # Temalar arası ortak dosyalar
     │   └── music.mp3
     ├── classic/               # Her tema kendi klasöründe
-    │   ├── envelope.png       # Zarf görseli (desktop)
-    │   ├── envelope-mobile.jpg  # Zarf görseli (mobil, varsa)
-    │   ├── preview-cover.png  # Şablon vitrin görseli
-    │   ├── preview-full.png   # Tam sayfa ekran görüntüsü
-    │   ├── preview-section-1.png ... preview-section-3.png
-    │   ├── preview-etkinlik.png
-    │   └── preview-mekan.png
+    │   ├── envelope.webp      # Zarf görseli (desktop) — yeni asset eklerken .webp olarak ekle
+    │   ├── envelope-mobile.webp  # Zarf görseli (mobil, varsa)
+    │   ├── preview-cover.webp # Şablon vitrin görseli
+    │   ├── preview-full.webp  # Tam sayfa ekran görüntüsü
+    │   ├── preview-section-1.webp ... preview-section-3.webp
+    │   ├── preview-etkinlik.webp
+    │   └── preview-mekan.webp
     ├── floral/
-    │   ├── bg.png             # Tema arka plan görseli
-    │   ├── envelope.png
-    │   └── preview-*.png
+    │   ├── bg.webp            # Tema arka plan görseli
+    │   ├── envelope.webp
+    │   └── preview-*.webp
     ├── modern/
     ├── starry/
     ├── vintage/
@@ -93,11 +93,11 @@ public/
     ├── gatsby/
     ├── ocean/
     └── flowers-pink/
-        ├── bg.png
-        ├── envelope.png
-        ├── envelope-mobile.png
-        ├── zerafet-cover.png      # İleride kullanılacak
-        └── zerafet-section_1.png  # İleride kullanılacak
+        ├── bg.webp
+        ├── envelope.webp
+        ├── envelope-mobile.webp
+        ├── zerafet-cover.webp      # İleride kullanılacak
+        └── zerafet-section_1.webp  # İleride kullanılacak
 ```
 
 ### Diğer Kök Dizin Dosyaları
@@ -131,7 +131,7 @@ public/
 
 ### Yeni Tema Ekleme (3 Adım)
 1. `src/components/invitation-themes/[yeni-tema]/` altına `HeroSection.tsx`, `EventDetailsSection.tsx`, `Footer.tsx` oluştur
-2. `public/themes/[yeni-tema]/` altına `envelope.png` (ve isteğe bağlı `bg.png`) koy
+2. `public/themes/[yeni-tema]/` altına `envelope.webp` (ve isteğe bağlı `bg.webp`) koy — PNG/JPG koyma, performans için her zaman WebP. `scripts/convert-images-to-webp.mjs` yardımcı olur
 3. `src/components/invitation-themes/themes.config.ts` → `THEME_REGISTRY`'ye yeni blok ekle
 
 ### API Yapısı
@@ -139,7 +139,7 @@ public/
 - **Admin API:** `/api/admin/*` — `proxy.ts` ile Supabase Auth koruması altında
 
 ## 🤖 Yeni Agent İçin Çalışma Prensipleri
-- **Tema görselleri:** Her zaman `public/themes/[tema-adı]/` altında. Yol formatı: `/themes/[key]/envelope.png`, `/themes/[key]/bg.png`, `/themes/[key]/preview-cover.png`
+- **Tema görselleri:** Her zaman `public/themes/[tema-adı]/` altında ve **WebP formatında**. Yol formatı: `/themes/[key]/envelope.webp`, `/themes/[key]/bg.webp`, `/themes/[key]/preview-cover.webp`. PNG/JPG ekleme — sadece elegant/gallery-5.jpg ve gallery-6.jpg istisna (HEIC/küçük JPEG)
 - **Ortak davetiye bileşenleri:** `src/components/invitation-shared/` (zarf, müzik, dekorasyon)
 - **Temel UI değişiklikleri:** `src/components/ui/` dizini
 - **Tip güvenliği:** Yeni model → `src/types/index.ts`, Yeni form → `src/lib/validations.ts`

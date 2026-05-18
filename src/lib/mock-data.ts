@@ -10,8 +10,8 @@ export const mockTemplates: Template[] = [
     name:          'Zarif Altın',
     slug:          'zarif-altin',
     previewImages: [
-      '/themes/classic/preview-cover.png',
-      '/themes/classic/preview-section-1.png',
+      '/themes/classic/preview-cover.webp',
+      '/themes/classic/preview-section-1.webp',
     ],
     description:
       'Altın ve krem tonlarında, zarif çiçek motifleri ile süslenmiş lüks düğün davetiyesi. Her detayda incelik taşır.',
@@ -26,8 +26,8 @@ export const mockTemplates: Template[] = [
     name:          'Modern Minimal',
     slug:          'modern-minimal',
     previewImages: [
-      '/themes/modern/preview-cover.png',
-      '/themes/modern/preview-section-1.png',
+      '/themes/modern/preview-cover.webp',
+      '/themes/modern/preview-section-1.webp',
     ],
     description:
       'Sade çizgiler ve beyaz alan kullanımıyla tasarlanmış modern minimalist davetiye. Şıklık sadelikte saklıdır.',
@@ -42,8 +42,8 @@ export const mockTemplates: Template[] = [
     name:          'Romantik Gül',
     slug:          'romantik-gul',
     previewImages: [
-      '/themes/floral/preview-cover.png',
-      '/themes/floral/preview-section-1.png',
+      '/themes/floral/preview-cover.webp',
+      '/themes/floral/preview-section-1.webp',
     ],
     description:
       'Pembe gül motifleri ve yumuşak renk geçişleriyle bezeli romantik nişan davetiyesi.',
@@ -58,8 +58,8 @@ export const mockTemplates: Template[] = [
     name:          'Klasik Lacivert',
     slug:          'klasik-lacivert',
     previewImages: [
-      '/themes/starry/preview-cover.png',
-      '/themes/starry/preview-section-1.png',
+      '/themes/starry/preview-cover.webp',
+      '/themes/starry/preview-section-1.webp',
     ],
     description:
       'Lacivert ve altın rengi uyumuyla hazırlanmış klasik ve zamansız düğün davetiyesi.',
@@ -74,8 +74,8 @@ export const mockTemplates: Template[] = [
     name:          'Bahar Çiçekleri',
     slug:          'bahar-cicekleri',
     previewImages: [
-      '/themes/vintage/preview-cover.png',
-      '/themes/vintage/preview-section-1.png',
+      '/themes/vintage/preview-cover.webp',
+      '/themes/vintage/preview-section-1.webp',
     ],
     description:
       'Renkli bahar çiçekleri ve pastel tonlarla hazırlanmış neşeli söz davetiyesi.',
@@ -90,8 +90,8 @@ export const mockTemplates: Template[] = [
     name:          'Kına Gecesi',
     slug:          'kina-gecesi',
     previewImages: [
-      '/themes/autumn/preview-cover.png',
-      '/themes/autumn/preview-section-1.png',
+      '/themes/autumn/preview-cover.webp',
+      '/themes/autumn/preview-section-1.webp',
     ],
     description:
       'Kırmızı, turuncu ve altın renklerinin dansıyla hazırlanan coşkulu kına gecesi davetiyesi.',
@@ -106,8 +106,8 @@ export const mockTemplates: Template[] = [
     name:          'Boho Doğa',
     slug:          'boho-doga',
     previewImages: [
-      '/themes/rustic/preview-cover.png',
-      '/themes/rustic/preview-section-1.png',
+      '/themes/rustic/preview-cover.webp',
+      '/themes/rustic/preview-section-1.webp',
     ],
     description:
       'Doğa temalı, pamuk çiçekleri ve yeşil yaprak motifleriyle süslenmiş boho düğün davetiyesi.',
@@ -122,8 +122,8 @@ export const mockTemplates: Template[] = [
     name:          'Siyah & Beyaz',
     slug:          'siyah-beyaz',
     previewImages: [
-      '/themes/gatsby/preview-cover.png',
-      '/themes/gatsby/preview-section-1.png',
+      '/themes/gatsby/preview-cover.webp',
+      '/themes/gatsby/preview-section-1.webp',
     ],
     description:
       'Siyah-beyaz kontrast ve geometrik desenlerle hazırlanmış çarpıcı modern düğün davetiyesi.',

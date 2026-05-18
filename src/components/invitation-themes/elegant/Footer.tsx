@@ -9,9 +9,9 @@ export default function Footer() {
 
   return (
     <>
-      <FloralDivider imageName="divider-1.png" height={140} />
+      <FloralDivider imageName="divider-1.webp" height={140} />
       <footer className="py-24 px-6 bg-[#faf8f5] text-[#3d3229] relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/themes/elegant/footer-bg.png')] bg-cover bg-bottom bg-no-repeat opacity-15 pointer-events-none" />
+        <div className="absolute inset-0 bg-[url('/themes/elegant/footer-bg.webp')] bg-cover bg-bottom bg-no-repeat opacity-15 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#faf8f5] via-transparent to-[#faf8f5]/80 pointer-events-none" />
 
         <div className="max-w-4xl mx-auto text-center space-y-10 relative z-10">

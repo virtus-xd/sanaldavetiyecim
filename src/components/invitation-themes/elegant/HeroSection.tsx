@@ -29,7 +29,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#faf8f5] text-[#3d3229]">
-      <div className="absolute inset-0 bg-[url('/themes/elegant/bg-mobile.png')] md:bg-[url('/themes/elegant/bg-desktop.png')] bg-cover bg-center bg-no-repeat pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('/themes/elegant/bg-mobile.webp')] md:bg-[url('/themes/elegant/bg-desktop.webp')] bg-cover bg-center bg-no-repeat pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#faf8f5]/30 to-[#faf8f5] pointer-events-none" />
 
       <div className="relative z-10 text-center px-6 md:px-16 animate-fade-in max-w-3xl w-[92%] mt-28 md:mt-36 mb-16 flex flex-col items-center">

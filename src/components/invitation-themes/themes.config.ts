@@ -3,7 +3,7 @@
  *
  * Yeni tema eklemek için:
  *   1. src/components/invitation-themes/{key}/ altına HeroSection, EventDetailsSection, Footer ekle
- *   2. public/themes/{key}/ altına envelope.png (ve istersen bg.png) koy
+ *   2. public/themes/{key}/ altına envelope.webp (ve istersen bg.webp) koy
  *   3. Aşağıdaki THEME_REGISTRY objesine yeni bir blok ekle
  *
  * ThemeKey, slug haritası ve renderer otomatik olarak buradan türer.
@@ -95,8 +95,8 @@ export const THEME_REGISTRY = {
     label: 'Zarif Altın',
     slug: 'zarif-altin',
     envelope: {
-      desktop: '/themes/classic/envelope.png',
-      mobile: '/themes/classic/envelope-mobile.jpg',
+      desktop: '/themes/classic/envelope.webp',
+      mobile: '/themes/classic/envelope-mobile.webp',
     },
     Hero: ClassicHero,
     Gallery: ClassicGallery,
@@ -106,7 +106,7 @@ export const THEME_REGISTRY = {
   modern: {
     label: 'Modern Minimal',
     slug: 'modern-minimal',
-    envelope: { desktop: '/themes/modern/envelope.png' },
+    envelope: { desktop: '/themes/modern/envelope.webp' },
     Hero: ModernHero,
     EventDetails: ModernEventDetails,
     Footer: ModernFooter,
@@ -114,7 +114,7 @@ export const THEME_REGISTRY = {
   floral: {
     label: 'Romantik Gül',
     slug: 'romantik-gul',
-    envelope: { desktop: '/themes/floral/envelope.png' },
+    envelope: { desktop: '/themes/floral/envelope.webp' },
     Hero: FloralHero,
     EventDetails: FloralEventDetails,
     Footer: FloralFooter,
@@ -122,7 +122,7 @@ export const THEME_REGISTRY = {
   starry: {
     label: 'Klasik Lacivert',
     slug: 'klasik-lacivert',
-    envelope: { desktop: '/themes/starry/envelope.png' },
+    envelope: { desktop: '/themes/starry/envelope.webp' },
     Hero: StarryHero,
     Gallery: StarryGallery,
     EventDetails: StarryEventDetails,
@@ -131,7 +131,7 @@ export const THEME_REGISTRY = {
   vintage: {
     label: 'Bahar Çiçekleri',
     slug: 'bahar-cicekleri',
-    envelope: { desktop: '/themes/vintage/envelope.png' },
+    envelope: { desktop: '/themes/vintage/envelope.webp' },
     Hero: VintageHero,
     EventDetails: VintageEventDetails,
     Footer: VintageFooter,
@@ -139,7 +139,7 @@ export const THEME_REGISTRY = {
   autumn: {
     label: 'Kına Gecesi',
     slug: 'kina-gecesi',
-    envelope: { desktop: '/themes/autumn/envelope.png' },
+    envelope: { desktop: '/themes/autumn/envelope.webp' },
     Hero: AutumnHero,
     EventDetails: AutumnEventDetails,
     Footer: AutumnFooter,
@@ -147,7 +147,7 @@ export const THEME_REGISTRY = {
   rustic: {
     label: 'Boho Doğa',
     slug: 'boho-doga',
-    envelope: { desktop: '/themes/rustic/envelope.png' },
+    envelope: { desktop: '/themes/rustic/envelope.webp' },
     Hero: RusticHero,
     EventDetails: RusticEventDetails,
     Footer: RusticFooter,
@@ -155,7 +155,7 @@ export const THEME_REGISTRY = {
   gatsby: {
     label: 'Siyah Beyaz',
     slug: 'siyah-beyaz',
-    envelope: { desktop: '/themes/gatsby/envelope.png' },
+    envelope: { desktop: '/themes/gatsby/envelope.webp' },
     Hero: GatsbyHero,
     EventDetails: GatsbyEventDetails,
     Footer: GatsbyFooter,
@@ -163,7 +163,7 @@ export const THEME_REGISTRY = {
   ocean: {
     label: 'Okyanus',
     slug: 'okyanus',
-    envelope: { desktop: '/themes/ocean/envelope.png' },
+    envelope: { desktop: '/themes/ocean/envelope.webp' },
     Hero: OceanHero,
     EventDetails: OceanEventDetails,
     Footer: OceanFooter,
@@ -172,8 +172,8 @@ export const THEME_REGISTRY = {
     label: 'Zerafet',
     slug: 'zerafet',
     envelope: {
-      desktop: '/themes/flowers-pink/envelope.png',
-      mobile: '/themes/flowers-pink/envelope-mobile.png',
+      desktop: '/themes/flowers-pink/envelope.webp',
+      mobile: '/themes/flowers-pink/envelope-mobile.webp',
     },
     Hero: FlowersPinkHero,
     Gallery: FlowersPinkGallery,
@@ -184,8 +184,8 @@ export const THEME_REGISTRY = {
     label: 'Altın Zarafet',
     slug: 'altin-zarafet',
     envelope: {
-      desktop: '/themes/elegant/envelope.png',
-      mobile: '/themes/elegant/envelope-mobile.png',
+      desktop: '/themes/elegant/envelope.webp',
+      mobile: '/themes/elegant/envelope-mobile.webp',
     },
     Hero: ElegantHero,
     Gallery: ElegantGallery,
@@ -196,8 +196,8 @@ export const THEME_REGISTRY = {
     label: 'Sage Bahçe',
     slug: 'sage-bahce',
     envelope: {
-      desktop: '/themes/sage/envelope.png',
-      mobile: '/themes/sage/envelope-mobile.png',
+      desktop: '/themes/sage/envelope.webp',
+      mobile: '/themes/sage/envelope-mobile.webp',
     },
     Hero: SageHero,
     Gallery: SageGallery,
@@ -208,8 +208,8 @@ export const THEME_REGISTRY = {
     label: 'Boho Krem',
     slug: 'boho-krem',
     envelope: {
-      desktop: '/themes/boho/envelope.png',
-      mobile: '/themes/boho/envelope-mobile.png',
+      desktop: '/themes/boho/envelope.webp',
+      mobile: '/themes/boho/envelope-mobile.webp',
     },
     Hero: BohoHero,
     Gallery: BohoGallery,
@@ -220,8 +220,8 @@ export const THEME_REGISTRY = {
     label: 'Bahar Çiçeği',
     slug: 'bahar-cicegi',
     envelope: {
-      desktop: '/themes/blossom/envelope.png',
-      mobile: '/themes/blossom/envelope-mobile.png',
+      desktop: '/themes/blossom/envelope.webp',
+      mobile: '/themes/blossom/envelope-mobile.webp',
     },
     Hero: BlossomHero,
     Gallery: BlossomGallery,

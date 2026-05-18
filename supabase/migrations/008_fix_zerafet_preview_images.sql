@@ -6,8 +6,8 @@
 
 UPDATE templates
 SET preview_images = ARRAY[
-  '/themes/flowers-pink/envelope.png',
-  '/themes/flowers-pink/bg.png'
+  '/themes/flowers-pink/envelope.webp',
+  '/themes/flowers-pink/bg.webp'
 ],
 updated_at = NOW()
 WHERE slug = 'zerafet';

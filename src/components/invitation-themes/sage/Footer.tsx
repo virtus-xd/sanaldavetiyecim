@@ -8,7 +8,7 @@ export default function Footer() {
 
   return (
     <footer className="py-20 px-6 bg-[#e9eee7] text-[#3a3f38] relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/themes/sage/bg.png')] bg-cover bg-center bg-no-repeat opacity-20 pointer-events-none mix-blend-multiply" />
+      <div className="absolute inset-0 bg-[url('/themes/sage/bg.webp')] bg-cover bg-center bg-no-repeat opacity-20 pointer-events-none mix-blend-multiply" />
 
       <div className="max-w-4xl mx-auto text-center space-y-10 relative z-10">
         <h3 className="font-handwriting text-4xl md:text-5xl text-[#2c352b]">

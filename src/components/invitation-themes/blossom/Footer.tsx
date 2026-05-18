@@ -8,7 +8,7 @@ export default function Footer() {
 
   return (
     <footer className="py-24 px-6 bg-[#f8faf7] text-[#333] relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/themes/blossom/footer-bg.png')] bg-cover bg-center bg-no-repeat opacity-80 pointer-events-none mix-blend-multiply" />
+      <div className="absolute inset-0 bg-[url('/themes/blossom/footer-bg.webp')] bg-cover bg-center bg-no-repeat opacity-80 pointer-events-none mix-blend-multiply" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#f8faf7] via-transparent to-[#eaf0e8]/80 pointer-events-none" />
 
       <div className="max-w-4xl mx-auto text-center space-y-10 relative z-10 bg-white/60 backdrop-blur-sm p-10 rounded-3xl border border-white/50 shadow-xl mt-8">

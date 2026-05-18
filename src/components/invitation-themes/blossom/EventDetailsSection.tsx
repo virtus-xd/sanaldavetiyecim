@@ -30,7 +30,7 @@ export default function EventDetailsSection() {
 
   return (
     <section ref={sectionRef} className="py-24 px-4 bg-[#f8faf7] text-[#333] relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/themes/blossom/event-bg.png')] bg-cover bg-center bg-no-repeat opacity-70 pointer-events-none mix-blend-multiply" />
+      <div className="absolute inset-0 bg-[url('/themes/blossom/event-bg.webp')] bg-cover bg-center bg-no-repeat opacity-70 pointer-events-none mix-blend-multiply" />
       <div className="absolute inset-0 bg-white/30 pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -106,7 +106,7 @@ export default function EventDetailsSection() {
                 />
               </div>
             ) : (
-              <div className="md:col-span-2 min-h-[260px] md:min-h-0 bg-[url('/themes/blossom/event-bg.png')] bg-cover bg-center opacity-60" />
+              <div className="md:col-span-2 min-h-[260px] md:min-h-0 bg-[url('/themes/blossom/event-bg.webp')] bg-cover bg-center opacity-60" />
             )}
           </div>
         </div>

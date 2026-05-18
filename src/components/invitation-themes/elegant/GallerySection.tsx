@@ -32,7 +32,7 @@ export default function GallerySection() {
 
   return (
     <>
-      <FloralDivider imageName="divider-1.png" height={140} />
+      <FloralDivider imageName="divider-1.webp" height={140} />
       <section
         ref={sectionRef}
         className="py-20 md:py-28 px-4 bg-[#faf8f5] text-[#3d3229] relative overflow-hidden"

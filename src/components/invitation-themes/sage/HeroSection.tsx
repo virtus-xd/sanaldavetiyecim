@@ -29,7 +29,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#f4f6f3] text-[#3a3f38]">
-      <div className="absolute inset-0 bg-[url('/themes/sage/bg.png')] bg-cover bg-center bg-no-repeat opacity-60 pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('/themes/sage/bg.webp')] bg-cover bg-center bg-no-repeat opacity-60 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#e9eee7]/80 via-transparent to-[#e9eee7]/80 pointer-events-none" />
 
       <div className="relative z-10 text-center px-6 animate-fade-in space-y-8 bg-white/60 backdrop-blur-md p-10 md:p-16 rounded-[3rem] border border-[#dce3d8] shadow-xl max-w-4xl">

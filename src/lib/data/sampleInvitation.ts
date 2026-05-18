@@ -57,10 +57,10 @@ export const sampleInvitation: InvitationData = {
   },
 
   gallery: [
-    '/themes/elegant/gallery-1.jpg',
-    '/themes/elegant/gallery-2.jpg',
-    '/themes/elegant/gallery-3.jpg',
-    '/themes/elegant/gallery-4.jpg',
+    '/themes/elegant/gallery-1.webp',
+    '/themes/elegant/gallery-2.webp',
+    '/themes/elegant/gallery-3.webp',
+    '/themes/elegant/gallery-4.webp',
     '/themes/elegant/gallery-5.jpg',
     '/themes/elegant/gallery-6.jpg',
   ],
